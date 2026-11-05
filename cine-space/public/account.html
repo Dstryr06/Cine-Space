@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Cine-Space</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <nav class="container pt-3">
+        <a href="index.html">Home</a> |
+        <a href="account.html">My Watchlist</a> |
+        <a href="login.html">Log in</a> |
+        <a href="#" onclick="logout()">Log out</a>
+    </nav>
+    <main class="container py-4">
+        <h1>My Watchlist</h1>
+        <div id="message"></div>
+
+        <button onclick="setTab('favorites')">Favorites</button>
+        <button onclick="setTab('watched')">Watched</button>
+        <button onclick="setTab('unwatched')">Unwatched</button>
+
+        <div id="list"></div>
+    </main>
+
+    <script src="js/app.js"></script>
+    <script>
+        requireLogin();
+        let tab = 'unwatched';
+
+        // GET /api/watchlist?tab=...  (the server only returns this user's entries)
+        async function loadList() {
+            try {
+                const r = await api(`/api/watchlist?tab=${tab}`);
+                list.innerHTML = r.data.map(e => `
+                    <div class="py-2">
+                        <strong>${esc(e.title)}</strong> (${esc(e.type)})
+                        ${e.type !== 'movie' ? `Episode <input type="number" min="0" value="${esc(e.episodeProgress ?? 0)}" onchange="update('${esc(e.id)}', { episodeProgress: Number(this.value) })"> of ${esc(e.episodes ?? '?')}` : ''}
+                        <button onclick="update('${esc(e.id)}', { favorite: ${!e.favorite} })">${e.favorite ? 'Unfavorite' : 'Favorite'}</button>
+                        <button onclick="update('${esc(e.id)}', { status: '${e.status === 'watched' ? 'unwatched' : 'watched'}' })">${e.status === 'watched' ? 'Mark unwatched' : 'Mark watched'}</button>
+                        <button onclick="removeEntry('${esc(e.id)}')">Remove</button>
+                    </div>
+                `).join('') || 'Nothing here yet.';
+            } catch (e) {
+                showMessage(e.message);
+            }
+        }
+
+        function setTab(name) { tab = name; loadList(); }
+
+        // PATCH /api/watchlist/:id
+        async function update(id, changes) {
+            try {
+                await api(`/api/watchlist/${id}`, { method: 'PATCH', body: JSON.stringify(changes) });
+                await loadList();
+            } catch (e) {
+                showMessage(e.message);
+            }
+        }
+
+        // DELETE /api/watchlist/:id
+        async function removeEntry(id) {
+            if (!confirm('Remove this from your watchlist?')) return;
+            try {
+                await api(`/api/watchlist/${id}`, { method: 'DELETE' });
+                await loadList();
+            } catch (e) {
+                showMessage(e.message);
+            }
+        }
+
+        loadList();
+    </script>
+</body>
+</html>
