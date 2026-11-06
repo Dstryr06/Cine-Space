@@ -1,13 +1,61 @@
 const express = require("express");
 const { httpError } = require("../lib/errors");
+const store = require("../lib/store");
+const { providers } = require("../providers");
 const router = express.Router();
 
-const notBuilt = (req, res, next) => next(httpError(501, "Not built yet."));
+const MOVIE_TERMS = ["adventure", "action", "comedy", "drama", "horror"];
+const param = (req, key) => String(req.query[key] ?? "").trim();
 
-// ONLINE data, converted to our own shape by the adapters in /providers
-router.get("/home", notBuilt);                    // popular movies, series and anime for the main page
-router.get("/search", notBuilt);                  // ?q=&type=&genre=&rating=  asks every adapter at once (Aggregator)
-router.get("/:source/:id", notBuilt);             // one title, plus watchLinks from data/watch-links.json
-router.get("/:source/:id/similar", notBuilt);     // other titles with the same genres
+// SYNC (the integration workflow): pull titles from every online API and keep them in data/catalog.json
+router.post("/sync", async (req, res, next) => { try {
+    const jobs = [
+    ["jikan", providers.jikan.popular()],
+    ["tvmaze", providers.tvmaze.popular()],
+    ...MOVIE_TERMS.map(term => ["movies", providers.movies.search(term)])
+    ];
+  const results = await Promise.allSettled(jobs.map(j => j[1]));   // all calls run at once; one failing only adds a warning
+
+    const catalog = new Map(store.read("catalog.json").map(t => [t.key, t]));
+    const before = catalog.size, warnings = [];
+    results.forEach((r, i) => r.status === "fulfilled" ? r.value.forEach(t => catalog.set(t.key, t)) : warnings.push(`${jobs[i][0]}: ${r.reason.message}`));
+    if (warnings.length === jobs.length) throw httpError(503, "No online service is available right now.", warnings);
+
+    store.write("catalog.json", [...catalog.values()]);
+    res.json({ message: "Catalog synchronized.", count: catalog.size, added: catalog.size - before, warnings: [...new Set(warnings)] });
+} catch (e) { next(e); } });
+
+// BROWSE: reads the saved catalog, so it is fast and still works with the internet off
+router.get(["/home", "/search"], (req, res, next) => { try {
+    const q = param(req, "q").toLowerCase(), type = param(req, "type"), genre = param(req, "genre").toLowerCase(), rating = param(req, "rating");
+    if (type && !["movie", "series", "anime"].includes(type)) throw httpError(400, "Type must be movie, series or anime.");
+
+    const data = store.read("catalog.json")
+    .filter(t => (!q || t.title.toLowerCase().includes(q)) && (!type || t.type === type)
+        && (!genre || t.genres.some(g => g.toLowerCase().includes(genre))) && (!rating || t.ageRating === rating))
+    .sort((a, b) => (b.score ?? 0) - (a.score ?? 0));
+    res.json({ count: data.length, data, warnings: [] });
+} catch (e) { next(e); } });
+
+// ONE TITLE: live details first, the saved copy if the online API is down
+router.get("/:source/:id", async (req, res, next) => { try {
+    const { source, id } = req.params;
+    if (!providers[source]) throw httpError(404, "Unknown source.");
+    let t;
+    try { t = await providers[source].getById(id); }
+    catch (e) {
+    t = store.read("catalog.json").find(x => x.key === `${source}:${id}`);
+    if (!t) throw e;
+    }
+  const ownLinks = store.read("watch-links.json").filter(l => l.key === t.key);   // { key, name, url, price }
+    res.json({ data: { ...t, watchLinks: [...(t.links || []), ...ownLinks] } });
+} catch (e) { next(e); } });
+
+// SIMILAR: catalog titles that share a genre
+router.get("/:source/:id/similar", (req, res, next) => { try {
+    const catalog = store.read("catalog.json"), key = `${req.params.source}:${req.params.id}`;
+    const t = catalog.find(x => x.key === key);
+    res.json({ data: t ? catalog.filter(x => x.key !== key && x.genres.some(g => t.genres.includes(g))).slice(0, 8) : [] });
+} catch (e) { next(e); } });
 
 module.exports = router;
