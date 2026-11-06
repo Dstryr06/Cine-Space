@@ -1,37 +1,47 @@
-// ADAPTER for movies using the iTunes Search API (https://itunes.apple.com). No key. About 20 requests per minute.
+// ADAPTER for series using TVmaze (https://api.tvmaze.com). No key.
 const { fetchJson } = require("../lib/http");
-const { httpError } = require("../lib/errors");
 const { toTitle } = require("../lib/model");
-const BASE = "https://itunes.apple.com";
+const BASE = "https://api.tvmaze.com";
 
-function ageRating(r) {
-if (r === "PG" || r === "PG-13" || r === "R") return r;
-if (r === "G") return "PG";
-if (r === "NC-17") return "R18";
-return null;
+// TVmaze summaries contain HTML tags; the canonical model stores plain text
+const stripHtml = html => String(html ?? "").replace(/<[^>]*>/g, "").replace(/\s+/g, " ").trim();
+
+// the mapping: TVmaze field -> our field (TVmaze has no age rating, so ageRating stays null)
+function toCanonical(s, episodes = null) {
+  const links = [];
+  if (s.webChannel?.officialSite) links.push({ name: `${s.webChannel.name} (official)`, url: s.webChannel.officialSite, price: "Varies" });
+  if (s.officialSite) links.push({ name: "Official site", url: s.officialSite, price: "Varies" });
+  return toTitle({
+    source: "tvmaze", id: s.id, type: "series", title: s.name,
+    genres: s.genres || [], year: s.premiered ? Number(s.premiered.slice(0, 4)) : null,
+    score: s.rating?.average, episodes,
+    lengthMinutes: s.averageRuntime ?? s.runtime ?? null,
+    creators: [s.network?.name || s.webChannel?.name].filter(Boolean),
+    synopsis: stripHtml(s.summary),
+    posterUrl: (s.image?.medium || "").replace(/^http:/, "https:"),
+    links
+  });
 }
 
-function toCanonical(m) {
-return toTitle({
-    source: "movies", id: m.trackId, type: "movie", title: m.trackName,
-    genres: [m.primaryGenreName].filter(Boolean), year: m.releaseDate ? Number(m.releaseDate.slice(0, 4)) : null,
-    ageRating: ageRating(m.contentAdvisoryRating),
-    lengthMinutes: m.trackTimeMillis ? Math.round(m.trackTimeMillis / 60000) : null,
-    creators: [m.artistName].filter(Boolean), synopsis: m.longDescription || m.shortDescription,
-    posterUrl: (m.artworkUrl100 || "").replace("100x100", "300x300"),
-    links: m.trackViewUrl ? [{ name: "Apple TV (iTunes)", url: m.trackViewUrl, price: "Paid" }] : []
-    });
+async function search(q) {
+  const r = await fetchJson(`${BASE}/search/shows?q=${encodeURIComponent(q)}`);
+  return r.slice(0, 12).map(x => toCanonical(x.show));
 }
 
-async function search(q) { return (await fetchJson(`${BASE}/search?media=movie&entity=movie&limit=12&term=${encodeURIComponent(q)}`)).results.map(toCanonical); }
+// TVmaze has no "popular" list: take the first page (up to 250 shows, the most TVmaze sends at once)
+// and keep every show that has a rating, best first
+async function popular() {
+  const shows = await fetchJson(`${BASE}/shows?page=0`, { timeout: 15000 });
+  return shows
+    .filter(s => s.rating?.average)
+    .sort((a, b) => b.rating.average - a.rating.average)
+    .map(s => toCanonical(s));
+}
 
-// iTunes has no "popular" list, so the home page uses a fixed search term
-async function popular() { return search("adventure"); }
-
+// embed=episodes lets us count the episodes (needed for episode progress on the watchlist)
 async function getById(id) {
-const r = await fetchJson(`${BASE}/lookup?id=${encodeURIComponent(id)}&entity=movie`);
-if (!r.results.length) throw httpError(404, "Title not found.");
-return toCanonical(r.results[0]);
+    const s = await fetchJson(`${BASE}/shows/${encodeURIComponent(id)}?embed=episodes`);
+    return toCanonical(s, s._embedded?.episodes?.length ?? null);
 }
 
 module.exports = { search, popular, getById };
