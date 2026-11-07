@@ -3,43 +3,100 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Cine-Space</title>
+    <title>Cine-Space | My Watchlist</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/cinespace.css" rel="stylesheet">
 </head>
-<body>
-    <nav class="container pt-3">
-        <a href="index.html">Home</a> |
-        <a href="account.html">My Watchlist</a> |
-        <a href="login.html">Log in</a> |
-        <a href="#" onclick="logout()">Log out</a>
+<body class="bg-light">
+
+    <nav class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+            <span class="navbar-brand fw-semibold">Cine-Space</span>
+            <div class="d-flex gap-2">
+                <button class="btn btn-dark" onclick="openDice()">🎲 Surprise me</button>
+                <a class="btn btn-dark" href="index.html">Home</a>
+                <button class="btn btn-dark" onclick="logout()">Log out</button>
+            </div>
+        </div>
     </nav>
+
     <main class="container py-4">
-        <h1>My Watchlist</h1>
+        <h2 class="h3 fw-semibold mb-3">My Watchlist</h2>
         <div id="message"></div>
 
-        <button onclick="setTab('favorites')">Favorites</button>
-        <button onclick="setTab('watched')">Watched</button>
-        <button onclick="setTab('unwatched')">Unwatched</button>
+        <div class="row g-4">
 
-        <div id="list"></div>
+            <!-- the watchlist -->
+            <div class="col-lg-8">
+                <div class="d-flex gap-2 mb-3">
+                    <button class="btn btn-outline-primary" onclick="setTab('favorites')">Favorites</button>
+                    <button class="btn btn-outline-primary" onclick="setTab('watched')">Watched</button>
+                    <button class="btn btn-outline-primary" onclick="setTab('unwatched')">Unwatched</button>
+                </div>
+                <div id="list"></div>
+            </div>
+
+            <!-- side form: add or edit your own title -->
+            <div class="col-lg-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-body">
+                        <h4 id="formTitle">Add your own title</h4>
+                        <p class="text-muted small">Can't find it in the catalog? Add it yourself.</p>
+
+                        <form id="customForm">
+                            <input type="hidden" id="customId">
+
+                            <label class="form-label">Title</label>
+                            <input id="cTitle" class="form-control mb-3" maxlength="100" required>
+
+                            <label class="form-label">Type</label>
+                            <select id="cType" class="form-select mb-3">
+                                <option value="movie">Movie</option>
+                                <option value="series">Series</option>
+                                <option value="anime">Anime</option>
+                            </select>
+
+                            <label class="form-label">Episodes (series and anime)</label>
+                            <input id="cEpisodes" type="number" min="1" step="1" class="form-control mb-3">
+
+                            <label class="form-label">Genres (separate with commas)</label>
+                            <input id="cGenres" class="form-control mb-3" placeholder="Action, Comedy">
+
+                            <button id="saveBtn" class="btn btn-primary">Add</button>
+                            <button type="button" id="cancelBtn" class="btn btn-secondary d-none" onclick="resetForm()">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
     </main>
 
     <script src="js/app.js"></script>
     <script>
         requireLogin();
         let tab = 'unwatched';
+        let entries = [];
 
         // GET /api/watchlist?tab=...  (the server only returns this user's entries)
         async function loadList() {
             try {
-                const r = await api(`/api/watchlist?tab=${tab}`);
-                list.innerHTML = r.data.map(e => `
-                    <div class="py-2">
-                        <strong>${esc(e.title)}</strong> (${esc(e.type)})
-                        ${e.type !== 'movie' ? `Episode <input type="number" min="0" value="${esc(e.episodeProgress ?? 0)}" onchange="update('${esc(e.id)}', { episodeProgress: Number(this.value) })"> of ${esc(e.episodes ?? '?')}` : ''}
-                        <button onclick="update('${esc(e.id)}', { favorite: ${!e.favorite} })">${e.favorite ? 'Unfavorite' : 'Favorite'}</button>
-                        <button onclick="update('${esc(e.id)}', { status: '${e.status === 'watched' ? 'unwatched' : 'watched'}' })">${e.status === 'watched' ? 'Mark unwatched' : 'Mark watched'}</button>
-                        <button onclick="removeEntry('${esc(e.id)}')">Remove</button>
+                entries = (await api(`/api/watchlist?tab=${tab}`)).data;
+                list.innerHTML = entries.map(e => `
+                    <div class="card card-body border-0 shadow-sm mb-2">
+                        <div class="d-flex align-items-center gap-2">
+                            ${e.posterUrl ? `<img src="${esc(e.posterUrl)}" width="54" height="80" class="rounded object-fit-cover" alt="" onerror="this.style.visibility='hidden'">` : ''}
+                            <strong>${esc(e.title)}</strong>
+                            <span class="badge text-bg-secondary">${esc(e.type)}</span>
+                            ${e.custom ? '<span class="badge text-bg-info">Custom</span>' : ''}
+                        </div>
+                        <div class="mt-2 d-flex flex-wrap gap-2 align-items-center">
+                            ${e.type !== 'movie' ? `Episode <input type="number" min="0" class="form-control form-control-sm w-auto" value="${esc(e.episodeProgress ?? 0)}" onchange="update('${esc(e.id)}', { episodeProgress: Number(this.value) })"> of ${esc(e.episodes ?? '?')}` : ''}
+                            <button class="btn btn-sm btn-outline-warning" onclick="update('${esc(e.id)}', { favorite: ${!e.favorite} })">${e.favorite ? 'Unfavorite' : 'Favorite'}</button>
+                            <button class="btn btn-sm btn-outline-success" onclick="update('${esc(e.id)}', { status: '${e.status === 'watched' ? 'unwatched' : 'watched'}' })">${e.status === 'watched' ? 'Mark unwatched' : 'Mark watched'}</button>
+                            ${e.custom ? `<button class="btn btn-sm btn-outline-secondary" onclick="editEntry('${esc(e.id)}')">Edit</button>` : ''}
+                            <button class="btn btn-sm btn-outline-danger" onclick="removeEntry('${esc(e.id)}')">Remove</button>
+                        </div>
                     </div>
                 `).join('') || 'Nothing here yet.';
             } catch (e) {
@@ -70,6 +127,57 @@
             }
         }
 
+        // movies have no episodes
+        function syncEpisodes() {
+            cEpisodes.disabled = cType.value === 'movie';
+            if (cType.value === 'movie') cEpisodes.value = '';
+        }
+        cType.addEventListener('change', syncEpisodes);
+
+        function resetForm() {
+            customForm.reset();
+            customId.value = '';
+            formTitle.textContent = 'Add your own title';
+            saveBtn.textContent = 'Add';
+            cancelBtn.classList.add('d-none');
+            syncEpisodes();
+        }
+
+        // "Edit" on a custom entry: copy it into the side form
+        function editEntry(id) {
+            const e = entries.find(x => x.id === id);
+            customId.value = e.id;
+            cTitle.value = e.title;
+            cType.value = e.type;
+            cEpisodes.value = e.episodes ?? '';
+            cGenres.value = (e.genres || []).join(', ');
+            formTitle.textContent = 'Edit custom title';
+            saveBtn.textContent = 'Save changes';
+            cancelBtn.classList.remove('d-none');
+            syncEpisodes();
+            cTitle.focus();
+        }
+
+        // side form: POST /api/watchlist/custom when adding, PATCH /api/watchlist/:id when editing
+        customForm.addEventListener('submit', async e => {
+            e.preventDefault();
+            try {
+                const editing = customId.value !== '';
+                const body = { title: cTitle.value, type: cType.value, episodes: cEpisodes.value, genres: cGenres.value };
+                const r = await api(editing ? `/api/watchlist/${customId.value}` : '/api/watchlist/custom', {
+                    method: editing ? 'PATCH' : 'POST',
+                    body: JSON.stringify(body)
+                });
+                showMessage(editing ? 'Custom title updated.' : r.message, 'success');
+                if (!editing) tab = 'unwatched';
+                resetForm();
+                await loadList();
+            } catch (err) {
+                showMessage(err.message);
+            }
+        });
+
+        syncEpisodes();
         loadList();
     </script>
 </body>
