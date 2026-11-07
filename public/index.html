@@ -31,7 +31,7 @@
                 <p class="text-muted">Movies, series and anime synced from free online APIs.</p>
 
                 <div class="d-flex flex-wrap gap-2">
-                    <input id="fTitle" class="form-control w-auto" placeholder="Search title" oninput="loadTitles()">
+                    <input id="fTitle" class="form-control w-auto" placeholder="Search title" oninput="searchSoon()">
                     <select id="fType" class="form-select w-auto" onchange="loadTitles()">
                         <option value="">All types</option>
                         <option value="movie">Movies</option>
@@ -90,16 +90,28 @@
             genresBuilt = true;
         }
 
+        // typing in the search box waits for a short pause, instead of searching on every key
+        let searchTimer, latestLoad = 0;
+        function searchSoon() {
+            clearTimeout(searchTimer);
+            searchTimer = setTimeout(loadTitles, 250);
+        }
+
         // GET /api/catalog/search with the filters, then draws one poster card per title
         async function loadTitles() {
+            const thisLoad = ++latestLoad;
+            if (!grid.children.length) grid.innerHTML = skeletonCards(12);     // grey placeholders while the first load runs
             try {
                 const params = new URLSearchParams({ q: fTitle.value, type: fType.value, genre: fGenre.value, rating: fRating.value });
                 const r = await api(`/api/catalog/search?${params}`);
+                if (thisLoad !== latestLoad) return;                            // a newer search already started: ignore this old answer
                 if (!genresBuilt && !fTitle.value && !fType.value && !fGenre.value && !fRating.value) buildGenres(r.data);
 
                 count.textContent = `${r.count} titles`;
                 grid.innerHTML = r.data.map(posterCard).join('') || '<p class="text-muted">No titles found. Click Sync Catalog to load some.</p>';
             } catch (e) {
+                if (thisLoad !== latestLoad) return;
+                grid.innerHTML = '';
                 showMessage(e.message);
             }
         }

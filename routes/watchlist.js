@@ -3,6 +3,7 @@ const crypto = require("crypto");
 const { httpError } = require("../lib/errors");
 const store = require("../lib/store");
 const { providers } = require("../providers");
+const { getDetails } = require("../lib/details");
 const { requireAuth } = require("../middleware/auth");
 const router = express.Router();
 
@@ -48,7 +49,7 @@ router.post("/", async (req, res, next) => { try {
     const entries = store.read("watchlist.json");
     if (mine(req, entries).some(e => e.key === `${source}:${id}`)) throw httpError(409, "Already on your watchlist.");
 
-    const t = await providers[source].getById(id);
+    const t = await getDetails(source, id);     // shared cache: instant if the title page already fetched it
     const entry = {
     id: crypto.randomUUID(), userId: req.user.id, key: t.key, title: t.title, type: t.type, genres: t.genres, posterUrl: t.posterUrl, year: t.year,
     episodes: t.episodes, episodeProgress: 0, favorite: false, status: "unwatched", addedAt: new Date().toISOString()

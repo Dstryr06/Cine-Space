@@ -1,1 +1,41 @@
-[]
+[
+  {
+    "id": "8ac29488-2443-4b3f-b76f-7fd17b90f52d",
+    "userId": "2a510ab9-f35c-44a4-ab1a-7a0a620af619",
+    "key": "tvmaze:82",
+    "title": "Game of Thrones",
+    "type": "series",
+    "genres": [
+      "Drama",
+      "Adventure",
+      "Fantasy"
+    ],
+    "posterUrl": "https://static.tvmaze.com/uploads/images/medium_portrait/498/1245274.jpg",
+    "year": 2011,
+    "episodes": 73,
+    "episodeProgress": 0,
+    "favorite": false,
+    "status": "unwatched",
+    "addedAt": "2026-11-07T02:29:51.506Z"
+  },
+  {
+    "id": "f2a3ea75-2139-486a-bba7-02735cfcd7ae",
+    "userId": "2a510ab9-f35c-44a4-ab1a-7a0a620af619",
+    "key": "jikan:5114",
+    "title": "Fullmetal Alchemist: Brotherhood",
+    "type": "anime",
+    "genres": [
+      "Action",
+      "Adventure",
+      "Drama",
+      "Fantasy"
+    ],
+    "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx5114-nSWCgQlmOMtj.jpg",
+    "year": 2009,
+    "episodes": 64,
+    "episodeProgress": 0,
+    "favorite": false,
+    "status": "unwatched",
+    "addedAt": "2026-11-07T08:02:42.717Z"
+  }
+]

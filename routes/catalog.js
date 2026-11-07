@@ -2,6 +2,8 @@ const express = require("express");
 const { httpError } = require("../lib/errors");
 const store = require("../lib/store");
 const { providers } = require("../providers");
+const { getDetails, peekDetails } = require("../lib/details");
+const { fallbackLinks } = require("../lib/watch");
 const router = express.Router();
 
 const MOVIE_TERMS = ["adventure", "action", "comedy", "drama", "horror"];
@@ -37,18 +39,35 @@ router.get(["/home", "/search"], (req, res, next) => { try {
     res.json({ count: data.length, data, warnings: [] });
 } catch (e) { next(e); } });
 
-// ONE TITLE: live details first, the saved copy if the online API is down
+// every link for one title: the API's own links, our saved links (data/watch-links.json), then search links
+function withLinks(t) {
+    const own = store.read("watch-links.json").filter(l => l.key === t.key);   // { key, name, url, price }
+    const seen = new Set();
+    const watchLinks = [...(t.links || []), ...own, ...fallbackLinks(t)].filter(l => l && l.url && !seen.has(l.url) && seen.add(l.url));
+    return { ...t, watchLinks };
+}
+
+// ONE TITLE: live details first, the saved copy if the online API is down.
+// ?cached=1 means "show me something right now": details we already fetched, else the saved copy, else nothing.
 router.get("/:source/:id", async (req, res, next) => { try {
     const { source, id } = req.params;
     if (!providers[source]) throw httpError(404, "Unknown source.");
-    let t;
-    try { t = await providers[source].getById(id); }
-    catch (e) {
-    t = store.read("catalog.json").find(x => x.key === `${source}:${id}`);
-    if (!t) throw e;
+    const key = `${source}:${id}`;
+
+    if (req.query.cached) {
+        const live = peekDetails(source, id);
+        const saved = live || store.read("catalog.json").find(x => x.key === key);
+        return res.json({ data: saved ? withLinks(saved) : null, fresh: !!live });
     }
-  const ownLinks = store.read("watch-links.json").filter(l => l.key === t.key);   // { key, name, url, price }
-    res.json({ data: { ...t, watchLinks: [...(t.links || []), ...ownLinks] } });
+
+    let t, fresh = true;
+    try { t = await getDetails(source, id); }
+    catch (e) {
+        t = store.read("catalog.json").find(x => x.key === key);
+        if (!t) throw e;
+        fresh = false;
+    }
+    res.json({ data: withLinks(t), fresh });
 } catch (e) { next(e); } });
 
 // SIMILAR: catalog titles that share a genre
