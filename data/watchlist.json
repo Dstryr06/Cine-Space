@@ -1,1 +1,487 @@
-[]
+[
+  {
+    "id": "26aa0b71-21f7-411b-97aa-d474a4210e14",
+    "userId": "88d15601-925c-4dea-a415-8e2d03212668",
+    "key": "tvmaze:169",
+    "title": "Breaking Bad",
+    "type": "series",
+    "favorite": false,
+    "status": "to_watch",
+    "addedAt": "2026-11-06T06:57:37.184Z",
+    "source": "tvmaze",
+    "mediaId": "169",
+    "progress": {
+      "season": 1,
+      "episode": 0
+    },
+    "tags": [],
+    "review": null,
+    "media": {
+      "key": "tvmaze:169",
+      "source": "tvmaze",
+      "id": "169",
+      "type": "series",
+      "title": "Breaking Bad",
+      "originalTitle": "",
+      "genres": [
+        "Drama",
+        "Crime",
+        "Thriller"
+      ],
+      "moods": [
+        "Thrilling",
+        "Dark",
+        "Heartfelt",
+        "Mind-bending"
+      ],
+      "franchise": "Breaking Bad",
+      "franchiseSource": "keyword",
+      "collection": null,
+      "year": 2008,
+      "ageRating": null,
+      "publicRating": {
+        "value": 9.2,
+        "scale": 10,
+        "votes": null,
+        "source": "TVmaze"
+      },
+      "score": 9.2,
+      "episodes": 62,
+      "seasons": [],
+      "showStatus": "",
+      "lengthMinutes": 60,
+      "creators": [
+        "AMC"
+      ],
+      "studios": [],
+      "keywords": [],
+      "synopsis": "Breaking Bad follows protagonist Walter White, a chemistry teacher who lives in New Mexico with his wife and teenage son who has cerebral palsy. White is diagnosed with Stage III cancer and given a prognosis of two years left to live. With a new sense of fearlessness based on his medical prognosis, and a desire to secure his family's financial security, White chooses to enter a dangerous world of drugs and crime and ascends to power in this world. The series explores how a fatal diagnosis such as White's releases a typical man from the daily concerns and constraints of normal society and follows his transformation from mild family man to a kingpin of the drug trade.",
+      "tagline": "",
+      "posterUrl": "https://static.tvmaze.com/uploads/images/medium_portrait/501/1253519.jpg",
+      "backdropUrl": "",
+      "platforms": [
+        {
+          "name": "Official site",
+          "kind": "official",
+          "url": "http://www.amc.com/shows/breaking-bad",
+          "logoUrl": "",
+          "region": ""
+        }
+      ],
+      "platformRegion": "",
+      "watchRegions": [],
+      "externalIds": {
+        "imdb": "",
+        "tmdb": "",
+        "tvdb": ""
+      }
+    },
+    "updatedAt": "2026-11-06T06:57:37.184Z",
+    "startedAt": null,
+    "completedAt": null,
+    "schema": 2
+  },
+  {
+    "id": "eabc7c7d-f6c4-4a3f-bcd0-c1e5191d10f3",
+    "userId": "88d15601-925c-4dea-a415-8e2d03212668",
+    "key": "tvmaze:179",
+    "title": "The Wire",
+    "type": "series",
+    "favorite": false,
+    "status": "to_watch",
+    "addedAt": "2026-11-06T06:57:48.822Z",
+    "source": "tvmaze",
+    "mediaId": "179",
+    "progress": {
+      "season": 1,
+      "episode": 0
+    },
+    "tags": [],
+    "review": null,
+    "media": {
+      "key": "tvmaze:179",
+      "source": "tvmaze",
+      "id": "179",
+      "type": "series",
+      "title": "The Wire",
+      "originalTitle": "",
+      "genres": [
+        "Drama",
+        "Crime"
+      ],
+      "moods": [
+        "Thrilling",
+        "Dark",
+        "Heartfelt"
+      ],
+      "franchise": null,
+      "franchiseSource": null,
+      "collection": null,
+      "year": 2002,
+      "ageRating": null,
+      "publicRating": {
+        "value": 8.9,
+        "scale": 10,
+        "votes": null,
+        "source": "TVmaze"
+      },
+      "score": 8.9,
+      "episodes": 60,
+      "seasons": [],
+      "showStatus": "",
+      "lengthMinutes": 60,
+      "creators": [
+        "HBO"
+      ],
+      "studios": [],
+      "keywords": [],
+      "synopsis": "The first season of The Wire (2002) concentrated on the often-futile efforts of police to infiltrate a West Baltimore drug ring headed by Avon Barksdale and his lieutenant, Stringer Bell. In Seasons Two and Three, as the Barksdale investigation escalated, new storylines involving pressures on the working class and the city's political leadership were introduced. Season Four focused on the stories of several young boys in the public school system, struggling with problems at home and the lure of the corner - set against the rise of a new drug empire in West Baltimore and a new Mayor in City Hall. The fifth and final season of The Wire centers on the media's role in addressing - or failing to address - the fundamental political, economic and social realities depicted over the course of the series, while also resolving storylines of the numerous characters woven throughout the narrative arc of the show.",
+      "tagline": "",
+      "posterUrl": "https://static.tvmaze.com/uploads/images/medium_portrait/504/1260189.jpg",
+      "backdropUrl": "",
+      "platforms": [
+        {
+          "name": "Official site",
+          "kind": "official",
+          "url": "http://www.hbo.com/the-wire",
+          "logoUrl": "",
+          "region": ""
+        }
+      ],
+      "platformRegion": "",
+      "watchRegions": [],
+      "externalIds": {
+        "imdb": "",
+        "tmdb": "",
+        "tvdb": ""
+      }
+    },
+    "updatedAt": "2026-11-06T06:57:48.822Z",
+    "startedAt": null,
+    "completedAt": null,
+    "schema": 2
+  },
+  {
+    "id": "22103984-32dd-4ef1-9531-3be0ebcb0b07",
+    "userId": "88d15601-925c-4dea-a415-8e2d03212668",
+    "key": "jikan:1575",
+    "title": "Code Geass: Lelouch of the Rebellion",
+    "type": "anime",
+    "favorite": false,
+    "status": "to_watch",
+    "addedAt": "2026-11-06T06:57:59.349Z",
+    "source": "jikan",
+    "mediaId": "1575",
+    "progress": {
+      "season": 1,
+      "episode": 0
+    },
+    "tags": [],
+    "review": null,
+    "media": {
+      "key": "jikan:1575",
+      "source": "jikan",
+      "id": "1575",
+      "type": "anime",
+      "title": "Code Geass: Lelouch of the Rebellion",
+      "originalTitle": "",
+      "genres": [
+        "Action",
+        "Drama",
+        "Mecha",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "moods": [
+        "Thrilling",
+        "Heartfelt",
+        "Mind-bending",
+        "Epic"
+      ],
+      "franchise": null,
+      "franchiseSource": null,
+      "collection": null,
+      "year": 2006,
+      "ageRating": null,
+      "publicRating": {
+        "value": 8.5,
+        "scale": 10,
+        "votes": null,
+        "source": "MyAnimeList"
+      },
+      "score": 8.5,
+      "episodes": 25,
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": 25,
+          "name": ""
+        }
+      ],
+      "showStatus": "",
+      "lengthMinutes": 24,
+      "creators": [
+        "Sunrise"
+      ],
+      "studios": [],
+      "keywords": [],
+      "synopsis": "On August 10th of the year 2010 the Holy Empire of Britannia began a campaign of conquest, its sights set on Japan. Operations were completed in one month thanks to Britannia's deployment of new mobile humanoid armor vehicles dubbed Knightmare Frames. Japan's rights and identity were stripped away, the once proud nation now referred to as Area 11. Its citizens, Elevens, are forced to scratch out a living while the Britannian aristocracy lives comfortably within their settlements. Pockets of resistance appear throughout Area 11, working towards independence for Japan. Lelouch, an exiled Imperial Prince of Britannia posing as a student, finds himself in the heart of the ongoing conflict for the island nation. Through a chance meeting with a mysterious girl named C.C., Lelouch gains his Geass, the power of the king. Now endowed with absolute dominance over any person, Lelouch may finally realize his goal of bringing down Britannia from within! (Source: Bandai Entertainment)",
+      "tagline": "",
+      "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx1575-hsmWM2ydNm1m.jpg",
+      "backdropUrl": "",
+      "platforms": [],
+      "platformRegion": "",
+      "watchRegions": [],
+      "externalIds": {
+        "imdb": "",
+        "tmdb": "",
+        "tvdb": ""
+      }
+    },
+    "updatedAt": "2026-11-06T06:57:59.349Z",
+    "startedAt": null,
+    "completedAt": null,
+    "schema": 2
+  },
+  {
+    "id": "e5a74604-ab6e-4b11-9f53-4e04c4fac5bd",
+    "userId": "88d15601-925c-4dea-a415-8e2d03212668",
+    "key": "jikan:5114",
+    "title": "Fullmetal Alchemist: Brotherhood",
+    "type": "anime",
+    "favorite": false,
+    "status": "to_watch",
+    "addedAt": "2026-11-06T06:58:25.327Z",
+    "source": "jikan",
+    "mediaId": "5114",
+    "progress": {
+      "season": 1,
+      "episode": 0
+    },
+    "tags": [],
+    "review": null,
+    "media": {
+      "key": "jikan:5114",
+      "source": "jikan",
+      "id": "5114",
+      "type": "anime",
+      "title": "Fullmetal Alchemist: Brotherhood",
+      "originalTitle": "",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy"
+      ],
+      "moods": [
+        "Thrilling",
+        "Heartfelt",
+        "Epic"
+      ],
+      "franchise": "Fullmetal Alchemist",
+      "franchiseSource": "keyword",
+      "collection": null,
+      "year": 2009,
+      "ageRating": null,
+      "publicRating": {
+        "value": 9,
+        "scale": 10,
+        "votes": null,
+        "source": "MyAnimeList"
+      },
+      "score": 9,
+      "episodes": 64,
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": 64,
+          "name": ""
+        }
+      ],
+      "showStatus": "",
+      "lengthMinutes": 25,
+      "creators": [
+        "bones"
+      ],
+      "studios": [],
+      "keywords": [],
+      "synopsis": "\"In order for something to be obtained, something of equal value must be lost.\" Alchemy is bound by this Law of Equivalent Exchange—something the young brothers Edward and Alphonse Elric only realize after attempting human transmutation: the one forbidden act of alchemy. They pay a terrible price for their transgression—Edward loses his left leg, Alphonse his physical body. It is only by the desperate sacrifice of Edward's right arm that he is able to affix Alphonse's soul to a suit of armor. Devastated and alone, it is the hope that they would both eventually return to their original bodies that gives Edward the inspiration to obtain metal limbs called \"automail\" and become a state alchemist, the Fullmetal Alchemist. Three years of searching later, the brothers seek the Philosopher's Stone, a mythical relic that allows an alchemist to overcome the Law of Equivalent Exchange. Even with military allies Colonel Roy Mustang, Lieutenant Riza Hawkeye, and Lieutenant Colonel Maes Hughes on their side, the brothers find themselves caught up in a nationwide conspiracy that leads them not only to the true nature of the elusive Philosopher's Stone, but their country's murky history as well. In between finding a serial killer and racing against time, Edward and Alphonse must ask themselves if what they are doing will make them human again... or take away their humanity. (Source: MAL Rewrite)",
+      "tagline": "",
+      "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/medium/bx5114-nSWCgQlmOMtj.jpg",
+      "backdropUrl": "",
+      "platforms": [],
+      "platformRegion": "",
+      "watchRegions": [],
+      "externalIds": {
+        "imdb": "",
+        "tmdb": "",
+        "tvdb": ""
+      }
+    },
+    "updatedAt": "2026-11-06T06:58:25.327Z",
+    "startedAt": null,
+    "completedAt": null,
+    "schema": 2
+  },
+  {
+    "id": "7ac38695-c706-4b62-9185-ea50db0250f4",
+    "userId": "25acb4c8-74b0-4adb-a8a2-4a9e7e73108e",
+    "key": "jikan:25777",
+    "source": "jikan",
+    "mediaId": "25777",
+    "title": "Attack on Titan Season 2",
+    "type": "anime",
+    "status": "to_watch",
+    "favorite": false,
+    "progress": {
+      "season": 1,
+      "episode": 0
+    },
+    "tags": [],
+    "review": null,
+    "media": {
+      "key": "jikan:25777",
+      "source": "jikan",
+      "id": "25777",
+      "type": "anime",
+      "title": "Attack on Titan Season 2",
+      "originalTitle": "Shingeki no Kyojin Season 2",
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mystery"
+      ],
+      "moods": [
+        "Thrilling",
+        "Heartfelt",
+        "Mind-bending",
+        "Epic"
+      ],
+      "franchise": "Attack on Titan",
+      "franchiseSource": "keyword",
+      "collection": null,
+      "year": 2017,
+      "ageRating": null,
+      "publicRating": {
+        "value": 8.5,
+        "scale": 10,
+        "votes": null,
+        "source": "AniList"
+      },
+      "score": 8.5,
+      "episodes": 12,
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": 12,
+          "name": "Season 1"
+        }
+      ],
+      "showStatus": "Finished",
+      "lengthMinutes": 25,
+      "creators": [
+        "WIT STUDIO"
+      ],
+      "studios": [
+        "WIT STUDIO"
+      ],
+      "keywords": [
+        "Survival",
+        "Shapeshifting",
+        "Post-Apocalyptic",
+        "Tragedy",
+        "Espionage",
+        "Military",
+        "Primarily Teen Cast",
+        "Kaiju",
+        "Dystopian",
+        "Gore",
+        "Medieval",
+        "Henshin",
+        "Politics",
+        "Revenge",
+        "Ensemble Cast",
+        "Anti-Hero",
+        "Super Power",
+        "Male Protagonist",
+        "Shounen",
+        "Dissociative Identities",
+        "Steampunk",
+        "Coming of Age",
+        "Cannibalism",
+        "Cult",
+        "Kuudere",
+        "Primarily Male Cast",
+        "Rural",
+        "CGI",
+        "Swordplay",
+        "Unrequited Love",
+        "Primarily Adult Cast",
+        "Matriarchy",
+        "LGBTQ+ Themes",
+        "Boarding School"
+      ],
+      "synopsis": "Eren Jaeger swore to wipe out every last Titan, but in a battle for his life he wound up becoming the thing he hates most. With his new powers, he fights for humanity's freedom facing the monsters that threaten his home. After a bittersweet victory against the Female Titan, Eren finds no time to rest—a horde of Titans is approaching Wall Rose and the battle for humanity continues! (Source: Funimation)",
+      "tagline": "",
+      "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx20958-HuFJyr54Mmir.jpg",
+      "backdropUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/20958-Y7eQdz9VENBD.jpg",
+      "platforms": [
+        {
+          "name": "Crunchyroll",
+          "kind": "stream",
+          "url": "http://www.crunchyroll.com/attack-on-titan",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Hulu",
+          "kind": "stream",
+          "url": "https://www.hulu.com/attack-on-titan",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Adult Swim",
+          "kind": "stream",
+          "url": "https://www.adultswim.com/videos/attack-on-titan",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "iQ",
+          "kind": "stream",
+          "url": "https://www.iq.com/album/1f7yemxzyr5",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Netflix",
+          "kind": "stream",
+          "url": "https://www.netflix.com/title/70299043",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Crunchyroll",
+          "kind": "stream",
+          "url": "https://www.crunchyroll.com/attack-on-titan-dubs",
+          "logoUrl": "",
+          "region": ""
+        }
+      ],
+      "platformRegion": "",
+      "watchRegions": [],
+      "externalIds": {
+        "imdb": "",
+        "tmdb": "",
+        "tvdb": ""
+      }
+    },
+    "addedAt": "2026-11-07T13:06:08.464Z",
+    "updatedAt": "2026-11-07T13:06:08.464Z",
+    "startedAt": null,
+    "completedAt": null,
+    "schema": 2
+  }
+]

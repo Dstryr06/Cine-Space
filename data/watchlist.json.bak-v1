@@ -1,0 +1,50 @@
+[
+  {
+    "id": "26aa0b71-21f7-411b-97aa-d474a4210e14",
+    "userId": "88d15601-925c-4dea-a415-8e2d03212668",
+    "key": "tvmaze:169",
+    "title": "Breaking Bad",
+    "type": "series",
+    "episodes": 62,
+    "episodeProgress": 0,
+    "favorite": false,
+    "status": "unwatched",
+    "addedAt": "2026-11-06T06:57:37.184Z"
+  },
+  {
+    "id": "eabc7c7d-f6c4-4a3f-bcd0-c1e5191d10f3",
+    "userId": "88d15601-925c-4dea-a415-8e2d03212668",
+    "key": "tvmaze:179",
+    "title": "The Wire",
+    "type": "series",
+    "episodes": 60,
+    "episodeProgress": 0,
+    "favorite": false,
+    "status": "unwatched",
+    "addedAt": "2026-11-06T06:57:48.822Z"
+  },
+  {
+    "id": "22103984-32dd-4ef1-9531-3be0ebcb0b07",
+    "userId": "88d15601-925c-4dea-a415-8e2d03212668",
+    "key": "jikan:1575",
+    "title": "Code Geass: Lelouch of the Rebellion",
+    "type": "anime",
+    "episodes": 25,
+    "episodeProgress": 0,
+    "favorite": false,
+    "status": "unwatched",
+    "addedAt": "2026-11-06T06:57:59.349Z"
+  },
+  {
+    "id": "e5a74604-ab6e-4b11-9f53-4e04c4fac5bd",
+    "userId": "88d15601-925c-4dea-a415-8e2d03212668",
+    "key": "jikan:5114",
+    "title": "Fullmetal Alchemist: Brotherhood",
+    "type": "anime",
+    "episodes": 64,
+    "episodeProgress": 0,
+    "favorite": false,
+    "status": "unwatched",
+    "addedAt": "2026-11-06T06:58:25.327Z"
+  }
+]
