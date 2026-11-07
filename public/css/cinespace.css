@@ -1,15 +1,63 @@
-/* Cine-Space look, loaded after Bootstrap: purple accent and poster cards (borrowed from the friend's design, kept small). */
+/* Cine-Space look, loaded after Bootstrap: purple accent, poster cards, light + dark mode. */
+
+/* ---------- colors and fonts (light mode) ---------- */
 :root {
     --accent: #7c3aed;
     --accent-dark: #6d28d9;
-    --page: #f4f0fb;
+    --accent-text: #6d28d9;
+    --accent-soft: rgba(124, 58, 237, .10);
+    --page: #f5f3fa;
+    --surface: #ffffff;
+    --text: #1f1a2e;
+    --line: #e2dcef;
+    --nav: #1b1230;
+    --font-body: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-display: "IBM Plex Sans", "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+    --bs-body-font-family: var(--font-body);
+    --bs-body-color: var(--text);
     --bs-link-color: #6d28d9;
     --bs-link-hover-color: #5b21b6;
 }
 
-body { background-color: var(--page) !important; }
-.navbar.bg-dark { background-color: #1b1230 !important; }
-.card { border-radius: 16px; }
+/* ---------- dark mode: Bootstrap 5.3 reads data-bs-theme on <html> (set by the toggle button) ---------- */
+[data-bs-theme="dark"] {
+    --accent-text: #c4b5fd;
+    --accent-soft: rgba(167, 139, 250, .16);
+    --page: #0f0b1a;
+    --surface: #181226;
+    --text: #ece8f6;
+    --line: #2f2646;
+    --nav: #0a0712;
+
+    --bs-body-bg: #0f0b1a;
+    --bs-body-color: #ece8f6;
+    --bs-secondary-color: #a8a1bd;
+    --bs-border-color: #2f2646;
+    --bs-link-color: #a78bfa;
+    --bs-link-hover-color: #c4b5fd;
+}
+
+/* ---------- base ---------- */
+body {
+    background-color: var(--page) !important;
+    color: var(--text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    transition: background-color .25s, color .25s;
+}
+h1, h2, h3, h4, h5, .h1, .h2, .h3, .h4, .h5 { font-family: var(--font-display); font-weight: 600; letter-spacing: -.01em; }
+h1, .h1, h2, .h2 { font-weight: 700; letter-spacing: -.02em; }
+.navbar-brand { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; letter-spacing: .01em; }
+label.form-label { font-weight: 500; font-size: .9rem; }
+
+.navbar.bg-dark { background-color: var(--nav) !important; border-bottom: 1px solid rgba(255, 255, 255, .06); }
+.card { --bs-card-bg: var(--surface); --bs-card-border-color: var(--line); border-radius: 16px; transition: background-color .25s, border-color .25s, transform .2s, box-shadow .2s; }
+
+/* ---------- buttons ---------- */
+.btn { border-radius: 10px; font-weight: 500; transition: transform .15s, box-shadow .15s, background-color .15s, border-color .15s, color .15s; }
+.btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 8px 18px -8px rgba(124, 58, 237, .55); }
+.btn:active:not(:disabled) { transform: none; box-shadow: none; }
 
 .btn-primary {
     --bs-btn-bg: var(--accent); --bs-btn-border-color: var(--accent);
@@ -17,41 +65,205 @@ body { background-color: var(--page) !important; }
     --bs-btn-active-bg: var(--accent-dark); --bs-btn-active-border-color: var(--accent-dark);
 }
 .btn-outline-primary {
-    --bs-btn-color: var(--accent-dark); --bs-btn-border-color: var(--accent);
+    --bs-btn-color: var(--accent-text); --bs-btn-border-color: var(--accent);
     --bs-btn-hover-bg: var(--accent); --bs-btn-hover-border-color: var(--accent);
     --bs-btn-active-bg: var(--accent-dark); --bs-btn-active-border-color: var(--accent-dark);
 }
-.navbar .btn-dark {
-    --bs-btn-bg: #1b1230; --bs-btn-border-color: #1b1230;
-    --bs-btn-hover-bg: #2c2147; --bs-btn-hover-border-color: #2c2147;
-    --bs-btn-active-bg: #3a2d5e; --bs-btn-active-border-color: #3a2d5e;
-}
-.form-control:focus, .form-select:focus { border-color: #8b5cf6; box-shadow: 0 0 0 .25rem rgba(124, 58, 237, .15); }
 
-/* poster cards */
+/* navbar buttons: pills with a soft highlight and an animated underline */
+.navbar .btn-dark {
+    --bs-btn-bg: transparent; --bs-btn-border-color: transparent;
+    --bs-btn-hover-bg: rgba(255, 255, 255, .08); --bs-btn-hover-border-color: transparent;
+    --bs-btn-active-bg: rgba(255, 255, 255, .14); --bs-btn-active-border-color: transparent;
+    position: relative; border-radius: 999px; padding: .35rem .95rem; font-size: .9rem; font-weight: 500; letter-spacing: .01em;
+}
+.navbar .btn-dark:hover { color: #fff; transform: none; box-shadow: none; }
+.navbar .btn-dark::after {
+    content: ""; position: absolute; left: 14px; right: 14px; bottom: 3px; height: 2px; border-radius: 2px;
+    background: #a78bfa; transform: scaleX(0); transition: transform .2s;
+}
+.navbar .btn-dark:hover::after { transform: scaleX(1); }
+.navbar [hidden] { display: none !important; }
+
+/* light / dark switch */
+.cs-theme-toggle { width: 36px; height: 36px; padding: 0 !important; display: inline-grid; place-items: center; }
+.cs-theme-toggle svg { transition: transform .4s; }
+.cs-theme-toggle:hover svg { transform: rotate(25deg) scale(1.1); }
+.navbar .cs-theme-toggle::after { display: none; }
+.cs-theme-toggle.floating {
+    position: fixed; top: 14px; right: 14px; z-index: 1500;
+    background: var(--surface); color: var(--text); border: 1px solid var(--line);
+}
+
+/* ---------- forms ---------- */
+.form-control {
+    background-color: var(--surface); border-color: var(--line); border-radius: 12px;
+    transition: border-color .15s, box-shadow .15s, background-color .25s;
+}
+.form-control:hover { border-color: var(--accent); }
+.form-control:focus, .form-select:focus { border-color: #8b5cf6; box-shadow: 0 0 0 .25rem rgba(124, 58, 237, .18); background-color: var(--surface); }
+
+/* ---------- custom dropdowns (built by enhanceSelects in app.js) ---------- */
+.cs-select { position: relative; display: block; }
+.cs-select-auto { display: inline-block; }
+.cs-select .cs-native { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; pointer-events: none; }
+
+.cs-select-btn {
+    width: 100%; min-height: 38px; display: flex; align-items: center; justify-content: space-between; gap: .75rem;
+    padding: .375rem .85rem; background: var(--surface); color: var(--text); border: 1px solid var(--line); border-radius: 12px;
+    font: inherit; text-align: left; cursor: pointer;
+    transition: border-color .15s, box-shadow .15s, background-color .25s;
+}
+.cs-select-btn:hover { border-color: var(--accent); box-shadow: 0 6px 16px -8px rgba(124, 58, 237, .5); }
+.cs-select-btn:focus-visible, .cs-select.open .cs-select-btn { outline: 0; border-color: #8b5cf6; box-shadow: 0 0 0 .25rem rgba(124, 58, 237, .18); }
+.cs-select-btn:disabled { opacity: .6; cursor: not-allowed; }
+.cs-select-sm .cs-select-btn { min-height: 31px; padding: .25rem .6rem; font-size: .875rem; border-radius: 10px; }
+
+.cs-select-label { display: grid; min-width: 0; }
+.cs-select-label > * { grid-area: 1 / 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cs-select-label .cs-size { visibility: hidden; height: 0; }
+
+.cs-select-caret {
+    flex: none; width: 7px; height: 7px; margin: -3px 2px 0 0; color: var(--accent-text);
+    border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg); transition: transform .2s;
+}
+.cs-select.open .cs-select-caret { transform: rotate(225deg); margin-top: 3px; }
+
+.cs-select-menu {
+    position: fixed; z-index: 3000; min-width: 160px; max-height: 280px; overflow-y: auto; padding: 6px;
+    background: var(--surface); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 20px 44px -14px rgba(30, 15, 70, .4); scrollbar-width: thin;
+    animation: menu-in .14s ease-out;
+}
+.cs-select-menu[hidden] { display: none; }
+@keyframes menu-in { from { opacity: 0; transform: translateY(-6px) scale(.98); } to { opacity: 1; transform: none; } }
+
+.cs-opt {
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 8px 12px; border-radius: 9px;
+    color: var(--text); font-size: .95rem; cursor: pointer; user-select: none;
+    transition: background-color .12s, color .12s, padding-left .12s;
+}
+.cs-opt:hover, .cs-opt.active { background: var(--accent-soft); color: var(--accent-text); padding-left: 16px; }
+.cs-opt[aria-selected="true"] { color: var(--accent-text); font-weight: 600; }
+.cs-opt[aria-selected="true"]::after {
+    content: ""; flex: none; width: 5px; height: 10px; margin-right: 2px;
+    border: solid currentColor; border-width: 0 2px 2px 0; transform: rotate(45deg) translateY(-2px);
+}
+.cs-opt[aria-disabled="true"] { opacity: .45; cursor: not-allowed; }
+
+/* ---------- poster cards ---------- */
 .poster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 20px 16px; }
 .poster-card {
     position: relative; display: block; aspect-ratio: 2 / 3; overflow: hidden; border-radius: 16px;
     background: linear-gradient(155deg, #e6ddf6, #efe9fa); color: #fff; text-decoration: none;
     box-shadow: 0 12px 32px -12px rgba(60, 30, 120, .35);
+    transition: transform .25s ease, box-shadow .25s ease;
 }
+a.poster-card:hover { transform: translateY(-6px); box-shadow: 0 0 0 2px var(--accent), 0 24px 44px -16px rgba(60, 30, 120, .6); color: #fff; }
 .poster-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-.poster-card:hover img { transform: scale(1.04); }
-.poster-card .initial { position: absolute; inset: 0; display: grid; place-items: center; font-size: 48px; font-weight: 800; color: var(--accent-dark); }
-.poster-tag { position: absolute; top: 10px; left: 10px; padding: 2px 9px; border-radius: 999px; background: rgba(20, 10, 40, .72); font-size: 11px; font-weight: 700; }
-.poster-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 12px 10px; background: linear-gradient(transparent, rgba(20, 10, 40, .92)); }
-.poster-info strong { display: block; font-size: 14px; line-height: 1.2; }
+.poster-card:hover img { transform: scale(1.06); }
+.poster-card .initial { position: absolute; inset: 0; display: grid; place-items: center; font-family: var(--font-display); font-size: 48px; font-weight: 700; color: var(--accent-dark); }
+.poster-tag { position: absolute; top: 10px; left: 10px; padding: 2px 9px; border-radius: 999px; background: rgba(20, 10, 40, .72); font-size: 11px; font-weight: 600; letter-spacing: .03em; text-transform: capitalize; }
+.poster-info { position: absolute; left: 0; right: 0; bottom: 0; padding: 30px 12px 10px; background: linear-gradient(transparent, rgba(20, 10, 40, .92)); transition: padding-bottom .25s; }
+.poster-card:hover .poster-info { padding-bottom: 14px; }
+.poster-info strong { display: block; font-family: var(--font-body); font-size: 14px; font-weight: 600; line-height: 1.25; }
 .poster-info small { opacity: .85; }
+[data-bs-theme="dark"] .poster-card { background: linear-gradient(155deg, #2a1f45, #1f1733); box-shadow: 0 12px 32px -12px rgba(0, 0, 0, .7); }
+[data-bs-theme="dark"] .poster-card .initial { color: #a78bfa; }
 
-/* the dice */
+/* the "+" shortcut on poster cards */
+.poster-add {
+    position: absolute; top: 8px; right: 8px; z-index: 2; width: 32px; height: 32px; padding: 0;
+    display: grid; place-items: center; border: 0; border-radius: 50%;
+    background: rgba(20, 10, 40, .72); color: #fff; font-size: 20px; font-weight: 600; line-height: 1;
+    backdrop-filter: blur(4px); cursor: pointer; transition: background-color .15s, transform .15s;
+}
+.poster-card:hover .poster-add { background: rgba(124, 58, 237, .9); }
+.poster-add:hover { background: var(--accent-dark) !important; transform: scale(1.15) rotate(90deg); }
+.poster-add:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.poster-add:disabled { cursor: default; }
+.poster-add.done, .poster-card:hover .poster-add.done { background: #16a34a; transform: none; font-size: 16px; }
+
+/* watchlist rows */
+#list > .card:hover { transform: translateY(-2px); box-shadow: 0 14px 30px -16px rgba(60, 30, 120, .5) !important; border-color: var(--accent); }
+
+/* ---------- the dice ---------- */
 .dice-card { background: linear-gradient(145deg, #4c1d95, #7c3aed 70%, #a78bfa); color: #fff; border: 0; }
+.dice-card:hover { transform: translateY(-3px); box-shadow: 0 22px 40px -18px rgba(76, 29, 149, .8); }
 .dice-card .btn { background: #fff; color: #4c1d95; border-color: #fff; font-weight: 600; }
-dialog.dice { border: 0; border-radius: 20px; padding: 0; width: min(560px, 92vw); box-shadow: 0 30px 80px rgba(20, 10, 40, .45); }
+.dice-card .btn:hover { background: #f3edff; color: #3b0f7a; }
+dialog.dice { border: 0; border-radius: 20px; padding: 0; width: min(560px, 92vw); background: var(--surface); color: var(--text); box-shadow: 0 30px 80px rgba(20, 10, 40, .45); }
 dialog.dice::backdrop { background: rgba(20, 10, 40, .55); }
 .dice-stage { display: grid; place-items: center; min-height: 200px; }
 .rolling { font-size: 64px; animation: wobble .5s ease-in-out infinite; }
 @keyframes wobble { 0%, 100% { transform: rotate(-14deg); } 50% { transform: rotate(14deg); } }
 .pick { display: grid; grid-template-columns: 120px 1fr; gap: 16px; width: 100%; }
 
-/* login and sign up */
+/* ---------- login and sign up ---------- */
 .auth-card { max-width: 400px; margin-top: 8vh; }
+
+/* ---------- pop-up messages ---------- */
+#toastBox { position: fixed; right: 16px; bottom: 16px; z-index: 4000; display: flex; flex-direction: column; gap: 8px; }
+.cs-toast {
+    max-width: 320px; padding: 10px 16px; border-radius: 12px; color: #fff; font-size: .9rem; font-weight: 500;
+    background: #16a34a; box-shadow: 0 10px 30px -10px rgba(20, 10, 40, .5); animation: toast-in .25s ease-out;
+}
+.cs-toast-error { background: #dc2626; }
+.cs-toast-warn { background: #d97706; }
+.cs-toast-info { background: #4c1d95; }
+@keyframes toast-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ---------- respect "reduce motion" settings ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+    a.poster-card:hover, .btn:hover, #list > .card:hover, .dice-card:hover { transform: none !important; }
+}
+
+/* ---------- My Watchlist page fixes ---------- */
+/* the page's <body class="bg-light"> is a Bootstrap class that beats a plain "body" rule, so it stayed pale in dark mode */
+body.bg-light { background-color: var(--page) !important; }
+
+/* a switched-off field (episodes for a movie) should look switched off in both modes */
+.form-control:disabled, .form-control[readonly],
+[data-bs-theme] .form-control:disabled, [data-bs-theme] .form-control[readonly] { background-color: var(--page); opacity: .6; cursor: not-allowed; }
+#list input[type="number"] { max-width: 96px; }
+
+/* outline buttons: readable text in light mode, brighter colors on the dark background */
+.btn-outline-warning { --bs-btn-color: #b45309; --bs-btn-border-color: #f59e0b; --bs-btn-hover-color: #1c1300; --bs-btn-hover-bg: #f59e0b; --bs-btn-hover-border-color: #f59e0b; --bs-btn-active-color: #1c1300; --bs-btn-active-bg: #d97706; --bs-btn-active-border-color: #d97706; }
+.btn-outline-success { --bs-btn-color: #15803d; --bs-btn-border-color: #16a34a; --bs-btn-hover-bg: #16a34a; --bs-btn-hover-border-color: #16a34a; --bs-btn-active-bg: #15803d; --bs-btn-active-border-color: #15803d; }
+.btn-outline-danger { --bs-btn-color: #dc2626; --bs-btn-border-color: #ef4444; --bs-btn-hover-bg: #dc2626; --bs-btn-hover-border-color: #dc2626; --bs-btn-active-bg: #b91c1c; --bs-btn-active-border-color: #b91c1c; }
+.btn-outline-secondary { --bs-btn-color: #5b5670; --bs-btn-border-color: #9a94b0; --bs-btn-hover-bg: #5b5670; --bs-btn-hover-border-color: #5b5670; }
+
+[data-bs-theme="dark"] .btn-outline-warning { --bs-btn-color: #fbbf24; --bs-btn-border-color: #d9a21b; --bs-btn-hover-color: #1c1300; --bs-btn-hover-bg: #fbbf24; --bs-btn-hover-border-color: #fbbf24; }
+[data-bs-theme="dark"] .btn-outline-success { --bs-btn-color: #4ade80; --bs-btn-border-color: #22c55e; --bs-btn-hover-color: #052e16; --bs-btn-hover-bg: #4ade80; --bs-btn-hover-border-color: #4ade80; --bs-btn-active-color: #052e16; --bs-btn-active-bg: #86efac; --bs-btn-active-border-color: #86efac; }
+[data-bs-theme="dark"] .btn-outline-danger { --bs-btn-color: #f87171; --bs-btn-border-color: #ef4444; --bs-btn-hover-color: #2a0505; --bs-btn-hover-bg: #f87171; --bs-btn-hover-border-color: #f87171; --bs-btn-active-color: #2a0505; --bs-btn-active-bg: #fca5a5; --bs-btn-active-border-color: #fca5a5; }
+[data-bs-theme="dark"] .btn-outline-secondary { --bs-btn-color: #c9c4da; --bs-btn-border-color: #5d5578; --bs-btn-hover-color: #fff; --bs-btn-hover-bg: #3a3352; --bs-btn-hover-border-color: #5d5578; }
+
+/* ---------- loading placeholders ---------- */
+.skeleton {
+    background: linear-gradient(100deg, rgba(124, 58, 237, .08) 30%, rgba(124, 58, 237, .18) 50%, rgba(124, 58, 237, .08) 70%);
+    background-size: 200% 100%; animation: shimmer 1.3s linear infinite; border-radius: 12px;
+}
+.poster-card.skeleton { box-shadow: none; }
+@keyframes shimmer { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+
+/* spinner on the "+" while a title is being added */
+.poster-add.busy { color: transparent; }
+.poster-add.busy::after {
+    content: ""; position: absolute; width: 14px; height: 14px; border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, .35); border-top-color: #fff; animation: spin .7s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ---------- where to watch ---------- */
+.watch-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.watch-chip {
+    display: inline-flex; align-items: center; gap: 8px; padding: 7px 14px; border-radius: 999px;
+    background: var(--accent-soft); color: var(--accent-text); border: 1px solid transparent;
+    font-size: .9rem; font-weight: 600; text-decoration: none;
+    transition: transform .15s, box-shadow .15s, background-color .15s, border-color .15s;
+}
+.watch-chip small { font-weight: 500; font-size: .75rem; opacity: .75; }
+.watch-chip:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 8px 18px -10px rgba(124, 58, 237, .6); color: var(--accent-text); }
+.watch-chip.is-search { background: transparent; border-color: var(--line); color: var(--text); font-weight: 500; }
+.watch-chip.is-search:hover { border-color: var(--accent); color: var(--accent-text); }

@@ -5,10 +5,10 @@ const BASE = "https://api.jikan.moe/v4";
 
 const anilist = require("./anilist");
 
-// HYBRID: lists (sync + search) come from AniList: fast, 50 titles per request.
-// The detail page tries Jikan first (it has age ratings and streaming links) and uses AniList if Jikan is slow.
+// HYBRID: AniList answers everything first (sync, search and the detail page with its streaming links): fast, one small request.
+// Jikan is the backup. It is slower, but it also knows age ratings (PG, PG-13, R), so it answers when AniList is down.
 // If a service fails, the other one answers instead.
-const get = url => fetchJson(url, { timeout: 8000, retries: 0 });
+const get = url => fetchJson(url, { timeout: 6000, retries: 0 });
 const withBackup = (name, main, fallback) => main().catch(err => { console.warn(`${name} failed (${err.message}), using the other anime service.`); return fallback(); });
 
 // Jikan writes ratings like "PG-13 - Teens 13 or older"; we keep PG, PG-13, R, R18
@@ -33,15 +33,19 @@ return toTitle({
 
 const search = q => withBackup("AniList", () => anilist.search(q), async () => (await get(`${BASE}/anime?q=${encodeURIComponent(q)}&limit=25`)).data.map(toCanonical));
 const popular = () => withBackup("AniList", () => anilist.popular(), async () => (await get(`${BASE}/top/anime?limit=25`)).data.map(toCanonical));
-const getById = id => withBackup("Jikan", () => fromJikan(id), () => anilist.getById(id));
+// Detail page: AniList first (fast, and it has the streaming links); Jikan only if AniList fails or does not know the title.
+const getById = id => withBackup("AniList", () => anilist.getById(id), () => fromJikan(id));
 
 async function fromJikan(id) {
-    const t = toCanonical((await get(`${BASE}/anime/${encodeURIComponent(id)}`)).data);
-    // where to watch: Jikan lists streaming sites on a separate endpoint; if it fails we still return the title
-    try {
-        const s = await get(`${BASE}/anime/${encodeURIComponent(id)}/streaming`);
-        t.links = (s.data || []).map(x => ({ name: x.name, url: x.url, price: "Varies" }));
-    } catch (e) { /* ignore */ }
+    const safeId = encodeURIComponent(id);
+    // the title and its streaming sites are asked at the same time (before: one after the other)
+    // where to watch is optional: if that endpoint fails we still return the title
+    const [main, streaming] = await Promise.all([
+        get(`${BASE}/anime/${safeId}`),
+        get(`${BASE}/anime/${safeId}/streaming`).catch(() => null)
+    ]);
+    const t = toCanonical(main.data);
+    if (streaming) t.links = (streaming.data || []).map(x => ({ name: x.name, url: x.url, price: "Varies" }));
     return t;
 }
 

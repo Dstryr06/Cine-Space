@@ -12,7 +12,7 @@ app.use(requestLogger);
 app.use(express.static(path.join(__dirname, "public")));
 
 app.get("/api/health", (req, res) => res.json({ ok: true, service: "cine-space" }));
-app.use("/api/auth", require("./routes/auth"));
+app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/catalog", require("./routes/catalog"));
 app.use("/api/watchlist", require("./routes/watchlist"));
 app.use("/api/random", require("./routes/random"));

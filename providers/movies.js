@@ -46,10 +46,23 @@ async function tmdbById(id) {
     const cert = us?.release_dates.map(d => d.certification).find(Boolean);
     const wp = m["watch/providers"]?.results || {};
     const region = wp.PH || wp.US;     // TMDB gives a JustWatch page listing where the movie streams
+    // one chip per service (Netflix, Apple TV...) with how it is offered; they all open that JustWatch page
+    const links = [], seen = new Set();
+    if (region?.link) {
+        for (const [field, label] of [["flatrate", "Stream"], ["free", "Free"], ["ads", "Free with ads"], ["rent", "Rent"], ["buy", "Buy"]]) {
+            for (const p of region[field] || []) {
+                if (links.length < 8 && p.provider_name && !seen.has(p.provider_name)) {
+                    seen.add(p.provider_name);
+                    links.push({ name: p.provider_name, url: region.link, price: label });
+                }
+            }
+        }
+        links.push({ name: "All options (JustWatch)", url: region.link, price: "Varies" });
+    }
     return fromTmdb(m, {
         genres: (m.genres || []).map(g => g.name), ageRating: ageRating(cert),
         creators: (m.credits?.crew || []).filter(c => c.job === "Director").map(c => c.name),
-        links: region?.link ? [{ name: "Where to watch (JustWatch)", url: region.link, price: "Varies" }] : []
+        links
     });
 }
 
