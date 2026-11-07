@@ -23,6 +23,8 @@ router.post("/register", (req, res, next) => { try {
     const errors = [];
     if (!/^[a-z0-9_]{3,20}$/.test(username)) errors.push("Username must be 3 to 20 letters, numbers or underscores.");
     if (password.length < 6) errors.push("Password must be at least 6 characters.");
+    if (!/\d/.test(password)) errors.push("Password must include a number.");
+    if (!/[^A-Za-z0-9]/.test(password)) errors.push("Password must include a special character, such as ! or @.");
     if (errors.length) throw httpError(400, "Validation failed.", errors);
 
     const users = store.read("users.json");
@@ -30,7 +32,7 @@ router.post("/register", (req, res, next) => { try {
     const user = { id: crypto.randomUUID(), username, passwordHash: hash(password), createdAt: new Date().toISOString() };
     users.push(user);
     store.write("users.json", users);
-    res.status(201).json({ token: createSession(user), username });
+    res.status(201).json({ message: "Account created. Please log in.", username });
 } catch (e) { next(e); } });
 
 router.post("/login", (req, res, next) => { try {
