@@ -15,6 +15,7 @@ app.get("/api/health", (req, res) => res.json({ ok: true, service: "cine-space" 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/catalog", require("./routes/catalog"));
 app.use("/api/watchlist", require("./routes/watchlist"));
+app.use("/api/random", require("./routes/random"));
 
 app.use((req, res, next) => next(httpError(404, `Route ${req.method} ${req.originalUrl} was not found.`)));
 
