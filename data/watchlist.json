@@ -173,5 +173,568 @@
     "startedAt": null,
     "completedAt": null,
     "schema": 2
+  },
+  {
+    "id": "958a4136-8d37-44ac-b58c-fecff6b1e2eb",
+    "userId": "fe0fc1b9-f2b8-44ee-926f-f4975fbf843b",
+    "key": "jikan:5114",
+    "source": "jikan",
+    "mediaId": "5114",
+    "title": "Fullmetal Alchemist: Brotherhood",
+    "type": "anime",
+    "status": "dropped",
+    "favorite": true,
+    "progress": {
+      "season": 1,
+      "episode": 0
+    },
+    "tags": [],
+    "review": null,
+    "media": {
+      "key": "jikan:5114",
+      "source": "jikan",
+      "id": "5114",
+      "type": "anime",
+      "title": "Fullmetal Alchemist: Brotherhood",
+      "originalTitle": "Hagane no Renkinjutsushi: FULLMETAL ALCHEMIST",
+      "genres": [
+        "Action",
+        "Adventure",
+        "Drama",
+        "Fantasy"
+      ],
+      "moods": [
+        "Thrilling",
+        "Heartfelt",
+        "Epic"
+      ],
+      "franchise": "Fullmetal Alchemist",
+      "franchiseSource": "keyword",
+      "collection": null,
+      "year": 2009,
+      "ageRating": null,
+      "publicRating": {
+        "value": 9,
+        "scale": 10,
+        "votes": null,
+        "source": "AniList"
+      },
+      "score": 9,
+      "episodes": 64,
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": 64,
+          "name": "Season 1"
+        }
+      ],
+      "showStatus": "Finished",
+      "lengthMinutes": 25,
+      "creators": [
+        "bones"
+      ],
+      "studios": [
+        "bones"
+      ],
+      "keywords": [
+        "Alchemy",
+        "Conspiracy",
+        "Military",
+        "War",
+        "Tragedy",
+        "Shounen",
+        "Politics",
+        "Male Protagonist",
+        "Philosophy",
+        "Ensemble Cast",
+        "Coming of Age",
+        "Fugitive",
+        "Super Power",
+        "Foreign",
+        "Disability",
+        "Steampunk",
+        "Gods",
+        "Necromancy",
+        "Cyborg",
+        "Revenge",
+        "Travel",
+        "Lost Civilization",
+        "Anachronism",
+        "Chimera",
+        "Dissociative Identities",
+        "Primarily Male Cast",
+        "Religion",
+        "Orphan",
+        "Slapstick",
+        "Human Experimentation",
+        "Gore",
+        "Body Horror",
+        "Urban Fantasy",
+        "Kuudere",
+        "Guns",
+        "Shapeshifting",
+        "Demons",
+        "Chibi",
+        "Trains",
+        "Swordplay",
+        "Adoption",
+        "Cannibalism",
+        "Heterosexual",
+        "Desert",
+        "Tanned Skin",
+        "Tsundere",
+        "Zombie",
+        "Snowscape",
+        "Crossdressing",
+        "Cultivation"
+      ],
+      "synopsis": "\"In order for something to be obtained, something of equal value must be lost.\" Alchemy is bound by this Law of Equivalent Exchange—something the young brothers Edward and Alphonse Elric only realize after attempting human transmutation: the one forbidden act of alchemy. They pay a terrible price for their transgression—Edward loses his left leg, Alphonse his physical body. It is only by the desperate sacrifice of Edward's right arm that he is able to affix Alphonse's soul to a suit of armor. Devastated and alone, it is the hope that they would both eventually return to their original bodies that gives Edward the inspiration to obtain metal limbs called \"automail\" and become a state alchemist, the Fullmetal Alchemist. Three years of searching later, the brothers seek the Philosopher's Stone, a mythical relic that allows an alchemist to overcome the Law of Equivalent Exchange. Even with military allies Colonel Roy Mustang, Lieutenant Riza Hawkeye, and Lieutenant Colonel Maes Hughes on their side, the brothers find themselves caught up in a nationwide conspiracy that leads them not only to the true nature of the elusive Philosopher's Stone, but their country's murky history as well. In between finding a serial killer and racing against time, Edward and Alphonse must ask themselves if what they are doing will make them human again... or take away their humanity. (Source: MAL Rewrite)",
+      "tagline": "",
+      "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx5114-nSWCgQlmOMtj.jpg",
+      "backdropUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/5114-q0V5URebphSG.jpg",
+      "platforms": [
+        {
+          "name": "Hulu",
+          "kind": "stream",
+          "url": "http://www.hulu.com/fullmetal-alchemist-brotherhood",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Crunchyroll",
+          "kind": "stream",
+          "url": "http://www.crunchyroll.com/fullmetal-alchemist-brotherhood",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Amazon Prime Video",
+          "kind": "stream",
+          "url": "https://www.amazon.com/One-All/dp/B002T8C202/ref=sr_1_52/146-1307517-0174061?s=instant-video&rps=1&ie=UTF8&qid=1528858933&sr=1-52&refinements=p_n_theme_browse-bin%3A2650364011%2Cp_85%3A2470955011%2Cp_n_entity_type%3A14069184011%7C14069185011",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Netflix",
+          "kind": "stream",
+          "url": "https://www.netflix.com/title/70204981",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "iQ",
+          "kind": "stream",
+          "url": "https://www.iq.com/album/s8lu95if3p",
+          "logoUrl": "",
+          "region": ""
+        }
+      ],
+      "platformRegion": "",
+      "watchRegions": [],
+      "externalIds": {
+        "imdb": "",
+        "tmdb": "",
+        "tvdb": ""
+      }
+    },
+    "addedAt": "2026-11-08T06:49:57.066Z",
+    "updatedAt": "2026-11-08T07:04:45.986Z",
+    "startedAt": null,
+    "completedAt": null,
+    "schema": 2
+  },
+  {
+    "id": "3eeb14b3-6a12-4025-9c67-0e1a7f5c8004",
+    "userId": "fe0fc1b9-f2b8-44ee-926f-f4975fbf843b",
+    "key": "jikan:38524",
+    "source": "jikan",
+    "mediaId": "38524",
+    "title": "Attack on Titan Season 3 Part 2",
+    "type": "anime",
+    "status": "completed",
+    "favorite": true,
+    "progress": {
+      "season": 1,
+      "episode": 10
+    },
+    "tags": [],
+    "review": null,
+    "media": {
+      "key": "jikan:38524",
+      "source": "jikan",
+      "id": "38524",
+      "type": "anime",
+      "title": "Attack on Titan Season 3 Part 2",
+      "originalTitle": "Shingeki no Kyojin Season 3 Part 2",
+      "genres": [
+        "Action",
+        "Drama",
+        "Fantasy",
+        "Mystery"
+      ],
+      "moods": [
+        "Thrilling",
+        "Heartfelt",
+        "Mind-bending",
+        "Epic"
+      ],
+      "franchise": "Attack on Titan",
+      "franchiseSource": "keyword",
+      "collection": null,
+      "year": 2019,
+      "ageRating": null,
+      "publicRating": {
+        "value": 8.9,
+        "scale": 10,
+        "votes": null,
+        "source": "AniList"
+      },
+      "score": 8.9,
+      "episodes": 10,
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": 10,
+          "name": "Season 1"
+        }
+      ],
+      "showStatus": "Finished",
+      "lengthMinutes": 24,
+      "creators": [
+        "WIT STUDIO"
+      ],
+      "studios": [
+        "WIT STUDIO"
+      ],
+      "keywords": [
+        "Dystopian",
+        "Military",
+        "Conspiracy",
+        "Tragedy",
+        "Survival",
+        "Memory Manipulation",
+        "Shapeshifting",
+        "Super Power",
+        "War",
+        "Revenge",
+        "Espionage",
+        "Steampunk",
+        "Ensemble Cast",
+        "Male Protagonist",
+        "Gore",
+        "Shounen",
+        "Medieval",
+        "Henshin",
+        "Primarily Adult Cast",
+        "Anti-Hero",
+        "Kaiju",
+        "Primarily Male Cast",
+        "Swordplay",
+        "Dissociative Identities",
+        "CGI",
+        "Kuudere",
+        "Drugs",
+        "Matriarchy"
+      ],
+      "synopsis": "The battle to retake Wall Maria begins now! With Eren’s new hardening ability, the Scouts are confident they can seal the wall and take back Shiganshina District. If they succeed, Eren can finally unlock the secrets of the basement—and the world. But danger lies in wait as Reiner, Bertholdt, and the Beast Titan have plans of their own. Could this be humanity’s final battle for survival? (Source: Funimation)",
+      "tagline": "",
+      "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx104578-k61nx3LPjvgd.jpg",
+      "backdropUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/104578-z7SadpYEuAsy.jpg",
+      "platforms": [
+        {
+          "name": "Crunchyroll",
+          "kind": "stream",
+          "url": "https://www.crunchyroll.com/attack-on-titan",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Hulu",
+          "kind": "stream",
+          "url": "https://www.hulu.com/series/attack-on-titan-9c91ffa3-dc20-48bf-8bc5-692e37c76d88",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Adult Swim",
+          "kind": "stream",
+          "url": "https://www.adultswim.com/videos/attack-on-titan",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Netflix",
+          "kind": "stream",
+          "url": "https://www.netflix.com/title/70299043",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Crunchyroll",
+          "kind": "stream",
+          "url": "https://www.crunchyroll.com/attack-on-titan-dubs",
+          "logoUrl": "",
+          "region": ""
+        }
+      ],
+      "platformRegion": "",
+      "watchRegions": [],
+      "externalIds": {
+        "imdb": "",
+        "tmdb": "",
+        "tvdb": ""
+      }
+    },
+    "addedAt": "2026-11-08T06:49:58.319Z",
+    "updatedAt": "2026-11-08T07:04:40.830Z",
+    "startedAt": "2026-11-08T07:04:40.830Z",
+    "completedAt": "2026-11-08T07:04:40.830Z",
+    "schema": 2
+  },
+  {
+    "id": "b00c0710-a448-4821-8837-51e2529dc165",
+    "userId": "fe0fc1b9-f2b8-44ee-926f-f4975fbf843b",
+    "key": "tvmaze:169",
+    "source": "tvmaze",
+    "mediaId": "169",
+    "title": "Breaking Bad",
+    "type": "series",
+    "status": "completed",
+    "favorite": false,
+    "progress": {
+      "season": 5,
+      "episode": 16
+    },
+    "tags": [],
+    "review": null,
+    "media": {
+      "key": "tvmaze:169",
+      "source": "tvmaze",
+      "id": "169",
+      "type": "series",
+      "title": "Breaking Bad",
+      "originalTitle": "",
+      "genres": [
+        "Drama",
+        "Crime",
+        "Thriller"
+      ],
+      "moods": [
+        "Thrilling",
+        "Dark",
+        "Heartfelt",
+        "Mind-bending"
+      ],
+      "franchise": "Breaking Bad",
+      "franchiseSource": "keyword",
+      "collection": null,
+      "year": 2008,
+      "ageRating": null,
+      "publicRating": {
+        "value": 9.2,
+        "scale": 10,
+        "votes": null,
+        "source": "TVmaze"
+      },
+      "score": 9.2,
+      "episodes": 62,
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": 7,
+          "name": "Season 1"
+        },
+        {
+          "number": 2,
+          "episodes": 13,
+          "name": "Season 2"
+        },
+        {
+          "number": 3,
+          "episodes": 13,
+          "name": "Season 3"
+        },
+        {
+          "number": 4,
+          "episodes": 13,
+          "name": "Season 4"
+        },
+        {
+          "number": 5,
+          "episodes": 16,
+          "name": "Season 5"
+        }
+      ],
+      "showStatus": "Ended",
+      "lengthMinutes": 60,
+      "creators": [
+        "AMC"
+      ],
+      "studios": [],
+      "keywords": [],
+      "synopsis": "Breaking Bad follows protagonist Walter White, a chemistry teacher who lives in New Mexico with his wife and teenage son who has cerebral palsy. White is diagnosed with Stage III cancer and given a prognosis of two years left to live. With a new sense of fearlessness based on his medical prognosis, and a desire to secure his family's financial security, White chooses to enter a dangerous world of drugs and crime and ascends to power in this world. The series explores how a fatal diagnosis such as White's releases a typical man from the daily concerns and constraints of normal society and follows his transformation from mild family man to a kingpin of the drug trade.",
+      "tagline": "",
+      "posterUrl": "https://static.tvmaze.com/uploads/images/original_untouched/501/1253519.jpg",
+      "backdropUrl": "",
+      "platforms": [
+        {
+          "name": "AMC",
+          "kind": "network",
+          "url": "https://www.amc.com/shows/breaking-bad",
+          "logoUrl": "",
+          "region": "US"
+        }
+      ],
+      "platformRegion": "",
+      "watchRegions": [],
+      "externalIds": {
+        "imdb": "tt0903747",
+        "tmdb": "",
+        "tvdb": "81189"
+      }
+    },
+    "addedAt": "2026-11-08T06:50:00.734Z",
+    "updatedAt": "2026-11-08T06:51:35.151Z",
+    "startedAt": "2026-11-08T06:51:35.151Z",
+    "completedAt": "2026-11-08T06:51:35.151Z",
+    "schema": 2
+  },
+  {
+    "id": "5d49f8cf-697f-4829-803b-5296b26dd407",
+    "userId": "fe0fc1b9-f2b8-44ee-926f-f4975fbf843b",
+    "key": "jikan:9253",
+    "source": "jikan",
+    "mediaId": "9253",
+    "title": "Steins;Gate",
+    "type": "anime",
+    "status": "watching",
+    "favorite": false,
+    "progress": {
+      "season": 1,
+      "episode": 6
+    },
+    "tags": [],
+    "review": null,
+    "media": {
+      "key": "jikan:9253",
+      "source": "jikan",
+      "id": "9253",
+      "type": "anime",
+      "title": "Steins;Gate",
+      "originalTitle": "",
+      "genres": [
+        "Drama",
+        "Psychological",
+        "Sci-Fi",
+        "Thriller"
+      ],
+      "moods": [
+        "Thrilling",
+        "Dark",
+        "Heartfelt",
+        "Mind-bending",
+        "Epic"
+      ],
+      "franchise": null,
+      "franchiseSource": null,
+      "collection": null,
+      "year": 2011,
+      "ageRating": null,
+      "publicRating": {
+        "value": 8.9,
+        "scale": 10,
+        "votes": null,
+        "source": "AniList"
+      },
+      "score": 8.9,
+      "episodes": 24,
+      "seasons": [
+        {
+          "number": 1,
+          "episodes": 24,
+          "name": "Season 1"
+        }
+      ],
+      "showStatus": "Finished",
+      "lengthMinutes": 24,
+      "creators": [
+        "WHITE FOX"
+      ],
+      "studios": [
+        "WHITE FOX"
+      ],
+      "keywords": [
+        "Time Manipulation",
+        "Alternate Universe",
+        "Time Loop",
+        "Conspiracy",
+        "Tragedy",
+        "Memory Manipulation",
+        "Male Protagonist",
+        "Urban",
+        "Dystopian",
+        "Primarily Adult Cast",
+        "Chuunibyou",
+        "Dissociative Identities",
+        "Cosmic Horror",
+        "Tsundere",
+        "Otaku Culture",
+        "Heterosexual",
+        "Femboy",
+        "Ensemble Cast",
+        "Kuudere",
+        "Suicide",
+        "Criminal Organization",
+        "Amnesia",
+        "Transgender",
+        "War",
+        "Clone",
+        "Espionage",
+        "Human Experimentation",
+        "Cosplay",
+        "Post-Apocalyptic",
+        "Gender Bending",
+        "Maids",
+        "Trains",
+        "LGBTQ+ Themes",
+        "Shrine Maiden",
+        "Detective",
+        "Gore",
+        "Seinen",
+        "Tomboy"
+      ],
+      "synopsis": "Self-proclaimed mad scientist Okabe Rintarou lives in a small room in Akihabara, where he invents \"future gadgets\" with fellow lab members Shiina Mayuri, his air-headed childhood friend, and Hashida Itaru, an otaku hacker. The three pass the time by tinkering with their latest creation, a \"Phone Microwave\" that can be controlled through text messages. The lab members soon face a string of mysterious incidents that lead to a game-changing discovery: the Phone Microwave can send emails to the past and thus alter history. Adapted from the critically acclaimed visual novel by 5pb. and Nitroplus, Steins;Gate takes Okabe to the depths of scientific theory and human despair as he faces the dire consequences of changing the past.",
+      "tagline": "",
+      "posterUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx9253-tIUXF2gfU8Sg.jpg",
+      "backdropUrl": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/n9253-JIhmKgBKsWUN.jpg",
+      "platforms": [
+        {
+          "name": "Crunchyroll",
+          "kind": "stream",
+          "url": "https://www.crunchyroll.com/steinsgate",
+          "logoUrl": "",
+          "region": ""
+        },
+        {
+          "name": "Bilibili TV",
+          "kind": "stream",
+          "url": "https://www.bilibili.tv/en/media/37207",
+          "logoUrl": "",
+          "region": ""
+        }
+      ],
+      "platformRegion": "",
+      "watchRegions": [],
+      "externalIds": {
+        "imdb": "",
+        "tmdb": "",
+        "tvdb": ""
+      }
+    },
+    "addedAt": "2026-11-08T07:03:21.120Z",
+    "updatedAt": "2026-11-08T07:05:43.420Z",
+    "startedAt": "2026-11-08T07:03:25.423Z",
+    "completedAt": null,
+    "schema": 2
   }
 ]
