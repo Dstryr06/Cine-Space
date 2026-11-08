@@ -1,52 +1,123 @@
-// ADAPTER for anime (https://api.jikan.moe/v4). No key. About 3 requests per second.
+// ADAPTER for anime: a HYBRID of two free services, so that nobody waits for the slow one.
+//  - AniList (https://graphql.anilist.co) is the MAIN source: one fast request gives 50 titles or a whole detail page.
+//  - Jikan (https://api.jikan.moe/v4, MyAnimeList) is slower and rate limited, so it never holds up a page.
+//    A background queue asks it, one title at a time, for what AniList lacks (age rating, MyAnimeList score with votes)
+//    and remembers the answers. Titles show those extras as soon as they are known.
+//  - If AniList is down, Jikan answers on its own (slower, but the page still works).
 const { fetchJson } = require("../lib/http");
 const { toTitle } = require("../lib/model");
+const logger = require("../lib/logger");
+const anilist = require("./anilist");
 const BASE = "https://api.jikan.moe/v4";
 
-const anilist = require("./anilist");
+const get = (url, ttl) => fetchJson(url, { timeout: 7000, retries: 0, ttl });
+const EXTRAS_TIMEOUT_MS = Number(process.env.JIKAN_EXTRAS_TIMEOUT_MS) || 3000;
+const getQuick = (url, ttl) => fetchJson(url, { timeout: EXTRAS_TIMEOUT_MS, retries: 0, ttl });
+const withBackup = (name, main, fallback) => main().catch(err => { logger.warn(`${name} failed (${err.message}), using the other anime service.`); return fallback(); });
 
-// HYBRID: AniList answers everything first (sync, search and the detail page with its streaming links): fast, one small request.
-// Jikan is the backup. It is slower, but it also knows age ratings (PG, PG-13, R), so it answers when AniList is down.
-// If a service fails, the other one answers instead.
-const get = url => fetchJson(url, { timeout: 6000, retries: 0 });
-const withBackup = (name, main, fallback) => main().catch(err => { console.warn(`${name} failed (${err.message}), using the other anime service.`); return fallback(); });
-
-// Jikan writes ratings like "PG-13 - Teens 13 or older"; we keep PG, PG-13, R, R18
+// Jikan writes ratings like "PG-13 - Teens 13 or older"; we keep G, PG, PG-13, R, R18
 function ageRating(text) {
-if (text.startsWith("PG-13")) return "PG-13";
-if (text.startsWith("PG") || text.startsWith("G ")) return "PG";
-if (text.startsWith("R+") || text.startsWith("Rx")) return "R18";
-if (text.startsWith("R ")) return "R";
-return null;
+    if (text.startsWith("PG-13")) return "PG-13";
+    if (text.startsWith("PG")) return "PG";
+    if (text.startsWith("G ")) return "G";
+    if (text.startsWith("R+") || text.startsWith("Rx")) return "R18";
+    if (text.startsWith("R ")) return "R";
+    return null;
 }
 
-// the mapping: Jikan field -> our field
+// the mapping: Jikan field -> Cine Space field
 function toCanonical(a) {
-return toTitle({
+    const episodes = a.episodes || null;
+    return toTitle({
     source: "jikan", id: a.mal_id, type: "anime", title: a.title_english || a.title,
-    genres: (a.genres || []).map(g => g.name), year: a.year ?? a.aired?.prop?.from?.year,
-    ageRating: ageRating(a.rating || ""), score: a.score, episodes: a.episodes,
-    lengthMinutes: parseInt(a.duration) || null, creators: (a.studios || []).map(s => s.name),
-    synopsis: a.synopsis, posterUrl: a.images?.jpg?.image_url
-});
+    originalTitle: a.title_english && a.title !== a.title_english ? a.title : "",
+    genres: [...(a.genres || []), ...(a.themes || [])].map(g => g.name), year: a.year ?? a.aired?.prop?.from?.year,
+    ageRating: ageRating(a.rating || ""),
+    publicRating: a.score ? { value: a.score, votes: a.scored_by, source: "MyAnimeList" } : null,
+    episodes, seasons: episodes ? [{ number: 1, episodes, name: "Season 1" }] : [], showStatus: a.status,
+    lengthMinutes: parseInt(a.duration) || null, creators: (a.studios || []).map(s => s.name), studios: (a.studios || []).map(s => s.name),
+    synopsis: a.synopsis, posterUrl: a.images?.jpg?.large_image_url || a.images?.jpg?.image_url
+    });
 }
 
-const search = q => withBackup("AniList", () => anilist.search(q), async () => (await get(`${BASE}/anime?q=${encodeURIComponent(q)}&limit=25`)).data.map(toCanonical));
-const popular = () => withBackup("AniList", () => anilist.popular(), async () => (await get(`${BASE}/top/anime?limit=25`)).data.map(toCanonical));
-// Detail page: AniList first (fast, and it has the streaming links); Jikan only if AniList fails or does not know the title.
-const getById = id => withBackup("AniList", () => anilist.getById(id), () => fromJikan(id));
+const searchJikan = async q => (await get(`${BASE}/anime?q=${encodeURIComponent(q)}&limit=25&sfw=true`, 5 * 60 * 1000)).data.map(toCanonical);
+const popularJikan = async () => (await get(`${BASE}/top/anime?limit=25`, 3600 * 1000)).data.map(toCanonical);
+
+
+// ---------- background extras from Jikan ----------
+const extras = new Map();     // MyAnimeList id -> { ageRating, publicRating }, kept while the server runs
+const queue = [];             // ids waiting to be asked
+const WARM_GAP_MS = 1100;     // Jikan allows about 3 requests per second and 60 per minute
+const MAX_QUEUE = 100;
+let running = false;
+const sleep = ms => new Promise(done => setTimeout(done, ms));
+
+// adds the extras to a title when we already know them
+const withExtras = t => {
+    const x = extras.get(t.id);
+    return x ? toTitle({ ...t, ageRating: x.ageRating || t.ageRating, publicRating: x.publicRating || t.publicRating }) : t;
+};
+
+async function jikanExtras(id) {
+  const j = toCanonical((await getQuick(`${BASE}/anime/${encodeURIComponent(id)}`, 30 * 60 * 1000)).data);
+    return { ageRating: j.ageRating, publicRating: j.publicRating };
+}
+
+// puts ids in the queue and works through it in the background, one request at a time
+function warm(ids, urgent = false) {
+    for (const raw of ids) {
+    const id = String(raw);
+    if (extras.has(id) || queue.includes(id) || queue.length >= MAX_QUEUE) continue;
+    urgent ? queue.unshift(id) : queue.push(id);
+    }
+    if (running) return;
+    running = true;
+    (async () => {
+    let fails = 0;
+    while (queue.length) {
+        const id = queue.shift();
+        try { extras.set(id, await jikanExtras(id)); fails = 0; }
+      catch (e) { if (++fails >= 3) { queue.length = 0; break; } }   // Jikan is struggling: stop and try again later
+        await sleep(WARM_GAP_MS);
+    }
+    running = false;
+    })();
+}
+
+const known = list => { warm(list.map(t => t.id)); return list.map(withExtras); };
+
+const search = q => withBackup("AniList", () => anilist.search(q).then(known), () => searchJikan(q));
+const popular = () => withBackup("AniList", () => anilist.popular().then(known), popularJikan);
+
+// DETAIL PAGE: AniList answers at once. Jikan is asked in the background and its extras are used when known.
+async function getById(id, opts) {
+    let t;
+    try { t = await anilist.getById(id, opts); }
+    catch (err) {
+    logger.warn(`AniList failed (${err.message}), using Jikan for the detail page.`);
+    return fromJikan(id);   // AniList is down: the full Jikan answer
+    }
+    warm([id], true);
+    return withExtras(t);
+}
 
 async function fromJikan(id) {
-    const safeId = encodeURIComponent(id);
-    // the title and its streaming sites are asked at the same time (before: one after the other)
-    // where to watch is optional: if that endpoint fails we still return the title
-    const [main, streaming] = await Promise.all([
-        get(`${BASE}/anime/${safeId}`),
-        get(`${BASE}/anime/${safeId}/streaming`).catch(() => null)
-    ]);
-    const t = toCanonical(main.data);
-    if (streaming) t.links = (streaming.data || []).map(x => ({ name: x.name, url: x.url, price: "Varies" }));
+  const t = toCanonical((await get(`${BASE}/anime/${encodeURIComponent(id)}`, 30 * 60 * 1000)).data);
+  // where to watch: Jikan lists streaming sites on a separate endpoint; if it fails we still return the title
+    try {
+    const s = await get(`${BASE}/anime/${encodeURIComponent(id)}/streaming`, 30 * 60 * 1000);
+    t.platforms = (s.data || []).map(x => ({ name: x.name, url: x.url, kind: "stream" }));
+  } catch (e) { /* the title is still useful without streaming links */ }
     return t;
 }
 
-module.exports = { search, popular, getById };
+
+// when the server starts, warm up the anime already saved in the catalog (not while the tests run)
+if (require.main && /server\.js$/.test(require.main.filename)) {
+    setTimeout(() => {
+    try { warm(require("../lib/catalog").load().items.filter(t => t.type === "anime").map(t => t.id)); }
+    catch (e) { /* no catalog yet */ }
+    }, 4000).unref();
+}
+
+module.exports = { search, popular, getById, searchJikan, searchAnilist: q => anilist.search(q).then(known) };

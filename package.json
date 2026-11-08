@@ -1,11 +1,16 @@
 {
   "name": "cine-space",
-  "version": "1.0.0",
-  "description": "Cine-Space: watchlist web app (Node.js + Express)",
+  "version": "2.0.0",
+  "description": "Cine Space: track movies, TV shows and anime (Node.js + Express)",
   "main": "server.js",
+  "engines": {
+    "node": ">=18"
+  },
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js"
+    "dev": "node --watch server.js",
+    "test": "node --test test/api.test.js",
+    "demo": "node test/demo-server.js"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
