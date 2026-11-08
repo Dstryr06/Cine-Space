@@ -48,7 +48,7 @@ Poster rules (shown in the form, checked in the browser and again on the server)
 Without it the app still works: movies come from iTunes and TV streaming info is limited to the original network.
 **Keep the token out of version control.** `.env` is in `.gitignore`; if a token was ever shared in a zip or a repository, create a new one in your TMDB settings.
 
-## Resilience (requirement 3)
+## Resilience
 - Every outgoing call has a timeout (6 s, `UPSTREAM_TIMEOUT_MS`) and retries once on network errors, 429 and 5xx. Timeouts are not retried, so slow services fail fast.
 - After 3 failures in a row a host is skipped for 30 s (circuit breaker), so users are not made to wait on a dead service.
 - Good answers are cached in memory; if a service later fails, the last good answer is served.
@@ -57,7 +57,7 @@ Without it the app still works: movies come from iTunes and TV streaming info is
 - Saving a title while the service is down uses the saved catalog copy. Library entries keep a full snapshot of the title, so the library works offline.
 - iTunes titles use their own source name (`itunes`), so a fallback id can never be mistaken for a TMDB id.
 
-## Logging and tracing (requirement 15)
+## Logging and tracing
 - Every request gets an id (or keeps the `X-Request-Id` you send). It is returned in the `X-Request-Id` header and in every error body (`{ "errors": [...], "requestId": "..." }`).
 - Outgoing API calls are logged under the id of the request that caused them.
 - Console: one line per request and per outgoing call. `logs/app.log`: the same as JSON lines (rotates at 5 MB). Request bodies are never logged.
