@@ -448,6 +448,38 @@ test("custom shows: add to library, track episodes, edit and delete keep everyth
 });
 
 // ---------------- logging & traceability ----------------
+test("custom shows: the Type picker (movie, TV show, anime) is saved, validated and used by the duplicate check", async () => {
+  assert.deepEqual((await call("GET", "/api/shows/options")).body.data.types, ["movie", "series", "anime"]);
+  const bad = await call("POST", "/api/shows", { title: "Typed Title", type: "documentary" });
+  assert.equal(bad.status, 400); assert.ok(bad.body.fields.type, "field error for type");
+
+  // no type sent = TV show (so older clients and saved shows keep working)
+  const plain = await call("POST", "/api/shows", { title: "Typed Title", year: 2020, seasons: [3] });
+  assert.equal(plain.status, 201); assert.equal(plain.body.data.type, "series");
+
+  // the same name as a different kind of title is allowed; a movie never keeps seasons
+  const movie = await call("POST", "/api/shows", { title: "Typed Title", year: 2020, type: "movie", seasons: [5, 5] });
+  assert.equal(movie.status, 201); assert.equal(movie.body.data.type, "movie");
+  assert.deepEqual(movie.body.data.seasons, []); assert.equal(movie.body.data.episodes, null);
+
+  // the same name and the same kind is a duplicate, and the message says which kind
+  const dup = await call("POST", "/api/shows", { title: "typed  title", year: 2020, type: "movie" });
+  assert.equal(dup.status, 409); assert.match(dup.body.fields.title, /movie/);
+  const anime = await call("POST", "/api/shows", { title: "Typed Title", year: 2020, type: "anime", seasons: [12] });
+  assert.equal(anime.status, 201); assert.equal(anime.body.data.type, "anime");
+
+  // changing the type on edit also updates the saved library copy
+  const lib = await call("POST", "/api/watchlist", { source: "custom", id: anime.body.data.id });
+  assert.equal(lib.status, 201); assert.equal(lib.body.data.type, "anime");
+  const edit = await call("PUT", `/api/shows/${anime.body.data.id}`, { title: "Typed Title", year: 2020, type: "series", seasons: [12] });
+  assert.equal(edit.status, 409, "now it would be a second TV show with the same name and year");
+  const edit2 = await call("PUT", `/api/shows/${anime.body.data.id}`, { title: "Typed Title Reborn", year: 2020, type: "series", seasons: [12] });
+  assert.equal(edit2.status, 200); assert.equal(edit2.body.data.type, "series");
+  assert.equal((await call("GET", `/api/watchlist/${lib.body.data.id}`)).body.data.type, "series");
+
+  for (const r of [plain, movie, anime]) assert.equal((await call("DELETE", `/api/shows/${r.body.data.id}`)).status, 200);
+});
+
 test("traceability: request id echoed, in error bodies, and upstream calls are attributed to it", async () => {
   const r = await mock.realFetch(base + "/api/search?q=iron", { headers: { Authorization: `Bearer ${token}`, "X-Request-Id": "trace-abc-123" } });
   assert.equal(r.headers.get("x-request-id"), "trace-abc-123");

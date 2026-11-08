@@ -33,13 +33,13 @@ Other commands: `npm test` (30 API tests, no internet needed) and `npm run demo`
 | 17 | Where to watch, by country (stream, free, rent, buy, network) | `platforms` on every title |
 | 18 | Strong passwords (10+ characters, upper and lower case, number, symbol, not a common password, not your username), checked live while typing and again on the server | `public/js/password-policy.js`, `routes/auth.js` |
 | 19 | Unique usernames, any letter case; a taken name shows "Username already exists" next to the field | `routes/auth.js`, `public/js/pages/login.js` |
-| 20 | Add, edit and delete your own TV shows (for titles the catalog doesn't have), with seasons, episodes and a poster | `routes/shows.js`, `lib/custom.js`, `public/js/show-form.js` |
+| 20 | Add, edit and delete your own movies, TV shows and anime (for titles the catalog doesn't have), with a type, seasons, episodes and a poster | `routes/shows.js`, `lib/custom.js`, `public/js/show-form.js` |
 | 21 | Poster upload with quality checks: JPG, PNG or WebP, portrait 2:3, at least 600 × 900 px, up to 8 MB, stored byte for byte (no re-compression) | `lib/image.js` |
 
 Purple accent, light and dark themes (follows your system until you pick one), responsive down to phones. The reasoning behind the interface is in [docs/DESIGN.md](docs/DESIGN.md).
 
-## Your own TV shows
-Use **Add TV show** (top bar) or the button under search results that found nothing. A show you add is private to your account and works like any other: library, status, episode progress, tags, reviews, Surprise me, search and browse ("Only shows I added" in Browse > Filters). Editing a show updates your library copy and keeps your episode counter inside the new seasons. Deleting a show also removes it from your library.
+## Your own shows
+Use **Add Show** (top bar) or the button under search results that found nothing. A show you add is private to your account and works like any other: library, status, episode progress, tags, reviews, Surprise me, search and browse ("Only shows I added" in Browse > Filters). Editing a show updates your library copy and keeps your episode counter inside the new seasons. Deleting a show also removes it from your library.
 
 Poster rules (shown in the form, checked in the browser and again on the server): JPG, PNG or WebP only (never SVG), portrait about 2:3, at least 600 × 900 px (1000 × 1500 or larger is ideal), up to 8 MB. The file is saved exactly as uploaded in `data/uploads/posters/` with a random name. Catalog posters are also requested in a larger size where TMDB and TVmaze offer one.
 
@@ -67,7 +67,7 @@ Without it the app still works: movies come from iTunes and TV streaming info is
 All routes except `/api/auth/*` and `/api/health` need `Authorization: Bearer <token>`. Errors always look like `{ "errors": ["..."], "requestId": "..." }`.
 
 - `POST /api/auth/register`, `POST /api/auth/login`, `GET /api/auth/me`. Register answers `400` with `fields.password` for a weak password and `409` with `fields.username` ("Username already exists") for a taken name
-- `GET /api/shows/options`, `GET|POST /api/shows`, `GET|PUT|DELETE /api/shows/:id`, `PUT|DELETE /api/shows/:id/poster` (raw image body): your own TV shows; they use source `custom` everywhere (`/api/catalog/custom/:id`, `POST /api/watchlist {source:"custom"}`)
+- `GET /api/shows/options`, `GET|POST /api/shows`, `GET|PUT|DELETE /api/shows/:id`, `PUT|DELETE /api/shows/:id/poster` (raw image body): your own movies, TV shows and anime (body field `type`: `movie` | `series` | `anime`, default `series`); they use source `custom` everywhere (`/api/catalog/custom/:id`, `POST /api/watchlist {source:"custom"}`)
 - `GET /api/search?q=&type=` online search (merged, ranked, marks titles already in your library)
 - `GET /api/catalog/home`, `GET /api/catalog/browse` (same filters as the library), `POST /api/catalog/sync`
 - `GET /api/catalog/:source/:id?region=PH` live details with fallback to the saved copy; `/similar`

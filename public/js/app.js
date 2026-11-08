@@ -233,7 +233,7 @@ export async function addToLibrary(source, id, status) {
 }
 
 // ---------- app shell ----------
-// One top bar: brand, two places to go (Discover, My library), search, the one global action (Add TV show) and the account menu.
+// One top bar: brand, two places to go (Discover, My library), search, the one global action (Add Show) and the account menu.
 export async function openShowForm(opts) { return (await import("./show-form.js")).openShowForm(opts); }
 
 export function mountShell({ active, search = true }) {
@@ -247,7 +247,7 @@ export function mountShell({ active, search = true }) {
         <nav class="nav" aria-label="Main">${link("home", "index.html", "Discover")}${link("library", "account.html", "My library")}</nav>
         ${search ? `<form class="search" role="search" id="globalSearchForm">${icon("search")}<input id="globalSearch" type="search" placeholder="Search movies, TV shows and anime" aria-label="Search movies, TV shows and anime" autocomplete="off"></form>` : ""}
         <div class="topbar-actions">
-        <button class="btn btn-primary btn-add" type="button" data-add-show aria-label="Add a TV show">${icon("plus")}<span class="txt">Add TV show</span></button>
+        <button class="btn btn-primary btn-add" type="button" data-add-show aria-label="Add a show">${icon("plus")}<span class="txt">Add Show</span></button>
         <button class="avatar-btn" type="button" id="userMenuBtn" aria-haspopup="true" aria-expanded="false" aria-label="Account menu">${esc(user[0] || "?")}</button>
         <div class="menu" id="userMenu" hidden>
             <div class="menu-head">${esc(user)}</div>
@@ -277,7 +277,7 @@ export function mountShell({ active, search = true }) {
     else if (e.target.closest("[data-random]")) openRandomizer();
     else if (e.target.closest("[data-activity]")) { toggle(false); showActivity(); }
     else if (e.target.closest("[data-sync]")) { toggle(false); await syncCatalog(); }
-    else if (add) openShowForm({ title: add.dataset.title || "" });
+    else if (add) openShowForm({ title: add.dataset.title || "", type: add.dataset.type || "" });
     });
 
     const form = $("#globalSearchForm");

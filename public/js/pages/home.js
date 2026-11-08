@@ -44,7 +44,7 @@ if (requireLogin()) {
       [...h.featured, ...h.added, ...h.movies, ...h.series, ...h.anime].forEach(t => items.set(t.key, t));
       view.innerHTML = `<div class="page-head"><div><h1 class="page-title">Discover</h1><p class="page-sub">${h.total} titles in the catalog${h.lastSyncedAt ? `, last synced ${esc(new Date(h.lastSyncedAt).toLocaleDateString())}` : ""}.</p></div>
           <button class="btn" type="button" data-open-random>${icon("dice")}Surprise me</button></div>
-        ${h.empty ? `<div class="empty">${icon("film")}<h3>Your catalog is empty</h3><p>Sync once to load popular movies, TV shows and anime. You can still search every title online, or add a TV show yourself.</p><button class="btn btn-primary" type="button" data-sync-now>${icon("refresh")}Sync catalog</button></div>` : feature(h.featured[0])}
+        ${h.empty ? `<div class="empty">${icon("film")}<h3>Your catalog is empty</h3><p>Sync once to load popular movies, TV shows and anime. You can still search every title online, or add a show yourself.</p><button class="btn btn-primary" type="button" data-sync-now>${icon("refresh")}Sync catalog</button></div>` : feature(h.featured[0])}
         <div id="watching"></div>
         ${row("Added by you", h.added, "index.html?browse=1&mine=1")}
         ${row("Popular TV shows", h.series, "index.html?browse=1&type=series&sort=rating")}
@@ -97,7 +97,7 @@ if (requireLogin()) {
       <div class="seg" role="group" aria-label="Type">${[["", `All (${results.length})`], ["movie", `Movies (${count("movie")})`], ["series", `TV (${count("series")})`], ["anime", `Anime (${count("anime")})`]].map(([v, l]) => `<button class="seg-btn" type="button" data-result-type="${v}" aria-pressed="${typeFilter === v}">${l}</button>`).join("")}</div></div>
       ${alertHtml(r.degraded ? "warn" : "info", r.warnings)}
       ${shown.length ? `<div class="grid">${shown.map(browseCard).join("")}</div>` : `<div class="empty">${icon("search")}<h3>No matches</h3><p>Check the spelling or try fewer words.</p></div>`}
-      <div class="empty" style="margin-top:32px">${icon("tv")}<h3>Can’t find the TV show?</h3><p>Add it yourself, with its poster and episodes, and track it like any other show.</p><button class="btn" type="button" data-add-show data-title="${esc(q)}">${icon("plus")}Add “${esc(q.length > 30 ? q.slice(0, 30) + "…" : q)}” as a TV show</button></div>`;
+      <div class="empty" style="margin-top:32px">${icon("tv")}<h3>Can’t find it?</h3><p>Add a movie, TV show or anime yourself, with its poster and episodes, and track it like any other title.</p><button class="btn" type="button" data-add-show data-title="${esc(q)}" data-type="${esc(typeFilter)}">${icon("plus")}Add “${esc(q.length > 30 ? q.slice(0, 30) + "…" : q)}”</button></div>`;
     view.onclick = e => { const b = e.target.closest("[data-result-type]"); if (b) { typeFilter = b.dataset.resultType; drawSearch(q, r); } };
   }
 
@@ -128,7 +128,7 @@ if (requireLogin()) {
       $("#bMsg").innerHTML = "";
       $("#bSub").textContent = `${r.count} ${r.count === 1 ? "title" : "titles"}${bstate.franchise ? ` in ${bstate.franchise}` : ""}`;
       $("#bGrid").innerHTML = r.data.length ? `<div class="grid">${r.data.map(browseCard).join("")}</div>`
-        : `<div class="empty">${icon("film")}<h3>Nothing here yet</h3><p>No titles match. Clear a filter, sync the catalog from the account menu, or add a TV show yourself.</p></div>`;
+        : `<div class="empty">${icon("film")}<h3>Nothing here yet</h3><p>No titles match. Clear a filter, sync the catalog from the account menu, or add a show yourself.</p></div>`;
       $("#bPager").innerHTML = pagerHtml(r.page, r.pages);
     } catch (e) { $("#bMsg").innerHTML = alertHtml("error", e.message, false); }
   }
