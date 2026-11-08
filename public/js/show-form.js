@@ -1,12 +1,12 @@
-// Add or edit a TV show that isn't in the online catalog, including its poster.
-//   openShowForm()               add a new show (optional { title } pre-fills the name, e.g. from a search that found nothing)
+// Add or edit a movie, TV show or anime that isn't in the online catalog, including its poster.
+//   openShowForm()               add a new show (optional { title, type } pre-fill the name and type, e.g. from a search that found nothing)
 //   openShowForm({ show })       edit a show: `show` is the show as the API returned it
 // New show -> opens its page. Edited show -> "cs:show-changed" is dispatched so the page behind the form can refresh itself.
 import { api, apiUpload, openModal, esc, $, $$, icon, toast, toastError, posterSrc, titleUrl } from "./app.js";
 
 const DEFAULTS = {
     genres: ["Action", "Adventure", "Animation", "Comedy", "Crime", "Drama", "Family", "Fantasy", "History", "Horror", "Kids", "Music", "Mystery", "Reality", "Romance", "Sci-Fi", "Slice of Life", "Sports", "Supernatural", "Thriller"],
-    statuses: ["Ongoing", "Ended"], limits: { title: 120, synopsis: 2000, genres: 5, seasons: 40, episodes: 500 },
+    statuses: ["Ongoing", "Ended"], types: ["movie", "series", "anime"], limits: { title: 120, synopsis: 2000, genres: 5, seasons: 40, episodes: 500 },
   poster: { maxBytes: 8 * 1024 * 1024, minWidth: 600, minHeight: 900, minRatio: 0.6, maxRatio: 0.75, recommended: "1000 × 1500 px or larger" }
 };
 const TYPES = ["image/jpeg", "image/png", "image/webp"];
@@ -29,19 +29,20 @@ function inspectImage(file, rules) {
     });
 }
 
-export async function openShowForm({ show = null, title = "" } = {}) {
+export async function openShowForm({ show = null, title = "", type = "" } = {}) {
     let rules = DEFAULTS;
   try { rules = { ...DEFAULTS, ...(await api("/api/shows/options")).data }; } catch (e) { /* the built-in rules match the server's; the server checks again anyway */ }
     const editing = !!show;
     const S = {
     id: show ? show.id : null,
+    type: show ? show.type : (rules.types.includes(type) ? type : "series"),
     genres: new Set(show ? show.genres : []),
     seasons: show && show.seasons.length ? show.seasons.map(s => s.episodes) : [""],
     file: null, previewUrl: show && show.posterUrl ? posterSrc(show.posterUrl, "large") : "", removePoster: false, posterNote: "", busy: false
     };
 
     const m = openModal({
-    title: editing ? "Edit TV show" : "Add a TV show", size: "xl",
+    title: editing ? "Edit show" : "Add a show", size: "xl",
     html: `<form class="sf" id="showForm" novalidate>
         <div class="poster-side">
         <span class="label" id="posterLabel">Poster</span>
@@ -52,13 +53,14 @@ export async function openShowForm({ show = null, title = "" } = {}) {
         </div>
         <div class="sf-fields">
         <div id="formMsg" aria-live="polite"></div>
+        <div class="field"><label for="sfType">What are you adding?</label><select class="select" id="sfType">${rules.types.map(t => `<option value="${t}">${{ movie: "Movie", series: "TV show", anime: "Anime" }[t]}</option>`).join("")}</select><span class="field-error" id="err-type"></span></div>
         <div class="field"><label for="sfTitle">Title</label><input class="input" id="sfTitle" maxlength="${rules.limits.title}" autocomplete="off" required value="${esc(show ? show.title : title)}"><span class="field-error" id="err-title"></span></div>
         <div class="sf-row">
-            <div class="field"><label for="sfYear">First aired (year)</label><input class="input" id="sfYear" type="number" inputmode="numeric" min="1870" max="2100" placeholder="Optional" value="${show && show.year ? show.year : ""}"><span class="field-error" id="err-year"></span></div>
+            <div class="field"><label for="sfYear" id="sfYearLabel">First aired (year)</label><input class="input" id="sfYear" type="number" inputmode="numeric" min="1870" max="2100" placeholder="Optional" value="${show && show.year ? show.year : ""}"><span class="field-error" id="err-year"></span></div>
             <div class="field"><label for="sfStatus">Status</label><select class="select" id="sfStatus"><option value="">Not sure</option>${rules.statuses.map(x => `<option ${show && show.showStatus === x ? "selected" : ""}>${esc(x)}</option>`).join("")}</select></div>
         </div>
         <div class="field"><span class="label" id="genreLabel">Genres <span class="hint">(up to ${rules.limits.genres})</span></span><div class="genre-pick" role="group" aria-labelledby="genreLabel" id="genres"></div><span class="field-error" id="err-genres"></span></div>
-        <div class="field"><span class="label">Seasons and episodes <span class="hint">(lets you track progress)</span></span><div class="seasons" id="seasons"></div><div><button class="btn btn-sm" type="button" id="addSeason">${icon("plus")}Add season</button></div><span class="field-error" id="err-seasons"></span></div>
+        <div class="field" id="seasonsField"><span class="label">Seasons and episodes <span class="hint">(lets you track progress)</span></span><div class="seasons" id="seasons"></div><div><button class="btn btn-sm" type="button" id="addSeason">${icon("plus")}Add season</button></div><span class="field-error" id="err-seasons"></span></div>
         <div class="field"><label for="sfSyn">Synopsis</label><textarea class="textarea" id="sfSyn" maxlength="${rules.limits.synopsis}" placeholder="Optional">${esc(show ? show.synopsis : "")}</textarea><span class="field-error" id="err-synopsis"></span></div>
         </div>
     </form>
@@ -129,15 +131,16 @@ export async function openShowForm({ show = null, title = "" } = {}) {
     q("#sfYear").addEventListener("input", () => fieldError("year", ""));
     function fieldError(name, msg) {
     const el = q(`#err-${name}`); if (el) el.textContent = msg || "";
-    const input = { title: "#sfTitle", year: "#sfYear", synopsis: "#sfSyn" }[name];
+    const input = { type: "#sfType", title: "#sfTitle", year: "#sfYear", synopsis: "#sfSyn" }[name];
     if (input) q(input).setAttribute("aria-invalid", msg ? "true" : "false");
     }
-    const NAMES = ["title", "year", "genres", "seasons", "synopsis"];
+    const NAMES = ["type", "title", "year", "genres", "seasons", "synopsis"];
 
     function collect() {
-    const seasons = S.seasons.map(v => String(v).trim()).filter(Boolean).map(Number);      // blank rows are ignored
+    const type = q("#sfType").value;
+    const seasons = type === "movie" ? [] : S.seasons.map(v => String(v).trim()).filter(Boolean).map(Number);      // blank rows are ignored; movies have none
     return {
-        title: q("#sfTitle").value.replace(/\s+/g, " ").trim(), year: q("#sfYear").value.trim() === "" ? null : Number(q("#sfYear").value),
+        type, title: q("#sfTitle").value.replace(/\s+/g, " ").trim(), year: q("#sfYear").value.trim() === "" ? null : Number(q("#sfYear").value),
         showStatus: q("#sfStatus").value, genres: [...S.genres], synopsis: q("#sfSyn").value.trim(), seasons
     };
     }
@@ -178,6 +181,18 @@ export async function openShowForm({ show = null, title = "" } = {}) {
         const first = Object.keys(f).find(k => k !== "poster"); if (first) { const t = { title: "#sfTitle", year: "#sfYear", synopsis: "#sfSyn" }[first]; if (t) q(t).focus(); }
     }
     });
+
+    // the Type picker decides what the form asks for: a movie has no seasons, so that block hides and "First aired" becomes "Released"
+    function syncType() {
+    const t = q("#sfType").value;
+    q("#seasonsField").hidden = t === "movie";
+    q("#sfYearLabel").textContent = t === "movie" ? "Released (year)" : "First aired (year)";
+    q("#sfStatus").closest(".field").hidden = t === "movie";
+    if (t === "movie") q("#sfStatus").value = "";
+    }
+    q("#sfType").value = S.type;
+    q("#sfType").addEventListener("change", syncType);
+    syncType();
 
     drawPoster(); drawGenres(); drawSeasons();
     q("#sfTitle").focus();
