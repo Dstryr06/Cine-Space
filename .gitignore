@@ -1,4 +1,14 @@
 node_modules
 .env
-data/.session-secret
 logs/
+
+# secrets
+data/.session-secret
+
+# private / per-machine data (accounts, personal libraries, uploads)
+data/users.json
+data/watchlist.json
+data/watchlist.json.bak-v1
+data/custom-shows.json
+data/watch-links.json
+data/uploads/

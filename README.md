@@ -9,7 +9,7 @@ Node.js 18+ and Express, no database server and no front-end build step.
 3. `npm start`, then open http://localhost:3000
 4. Create an account, then use the account menu (top right) > **Sync catalog** once to fill Discover and the offline catalog
 
-Other commands: `npm test` (30 API tests, no internet needed) and `npm run demo` (runs the real app on port 3200 with fake online services, handy for trying the UI without keys).
+Other commands: `npm run check` or `npm test` (31 API tests, no internet needed) and `npm run demo` (runs the real app on port 3200 with fake online services, handy for trying the UI without keys).
 
 ## Features
 | # | Feature | Where |
