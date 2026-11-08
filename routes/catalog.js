@@ -32,7 +32,7 @@ router.post("/sync", async (req, res, next) => {
     ];
   const results = await Promise.allSettled(jobs.map(j => j[1]));   // all calls run at once; one failing only adds a warning
 
-    const saved = new Map(store.read("catalog.    json").map(t => [t.key, t]));
+    const saved = new Map(store.read("catalog.json").map(t => [t.key, t]));
     const before = saved.size, warnings = [];
     results.forEach((r, i) => r.status === "fulfilled" ? r.value.forEach(t => saved.set(t.key, toTitle(t))) : warnings.push(`${jobs[i][0]}: ${r.reason.message}`));
     if (warnings.length === jobs.length) throw httpError(503, "No online service is available right now.", warnings);
