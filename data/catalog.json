@@ -6505,12 +6505,12 @@
     "year": 2014,
     "ageRating": null,
     "publicRating": {
-      "value": 8.1,
+      "value": 8.2,
       "scale": 10,
       "votes": null,
       "source": "TVmaze"
     },
-    "score": 8.1,
+    "score": 8.2,
     "episodes": null,
     "seasons": [],
     "showStatus": "Ended",
@@ -15413,7 +15413,7 @@
     "score": 6.6,
     "episodes": null,
     "seasons": [],
-    "showStatus": "Running",
+    "showStatus": "Ended",
     "lengthMinutes": 60,
     "creators": [
       "Disney+"
@@ -16892,7 +16892,7 @@
     "publicRating": {
       "value": 8.6,
       "scale": 10,
-      "votes": 8724,
+      "votes": 8748,
       "source": "TMDB"
     },
     "score": 8.6,
@@ -16941,7 +16941,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 37266,
+      "votes": 37280,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -16988,12 +16988,12 @@
     "year": 2026,
     "ageRating": null,
     "publicRating": {
-      "value": 7.4,
+      "value": 7.5,
       "scale": 10,
-      "votes": 1709,
+      "votes": 1820,
       "source": "TMDB"
     },
-    "score": 7.4,
+    "score": 7.5,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -17038,7 +17038,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 222,
+      "votes": 231,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -17085,12 +17085,12 @@
     "year": 2026,
     "ageRating": null,
     "publicRating": {
-      "value": 6,
+      "value": 6.1,
       "scale": 10,
-      "votes": 141,
+      "votes": 158,
       "source": "TMDB"
     },
-    "score": 6,
+    "score": 6.1,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -17135,7 +17135,7 @@
     "publicRating": {
       "value": 5.7,
       "scale": 10,
-      "votes": 139,
+      "votes": 140,
       "source": "TMDB"
     },
     "score": 5.7,
@@ -17184,7 +17184,7 @@
     "publicRating": {
       "value": 6.7,
       "scale": 10,
-      "votes": 514,
+      "votes": 531,
       "source": "TMDB"
     },
     "score": 6.7,
@@ -17233,7 +17233,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 6592,
+      "votes": 6623,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -17281,12 +17281,12 @@
     "year": 2026,
     "ageRating": null,
     "publicRating": {
-      "value": 7,
+      "value": 6.9,
       "scale": 10,
-      "votes": 82,
+      "votes": 89,
       "source": "TMDB"
     },
-    "score": 7,
+    "score": 6.9,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -17297,7 +17297,7 @@
     "synopsis": "Hundreds of years before Pennywise, three youngsters venture into the Western Wood...where they encounter a terrifying ancient spirit.",
     "tagline": "",
     "posterUrl": "https://image.tmdb.org/t/p/w342/4PtzGcegF5Po1NmDAW9IklyvAUh.jpg",
-    "backdropUrl": "https://image.tmdb.org/t/p/w780/hw3d1wDXTsEVyViubbTgHsMIvX0.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w780/8vky6e0D4dSZMlxHWXBIRRFP1Pb.jpg",
     "platforms": [],
     "platformRegion": "",
     "watchRegions": [],
@@ -17333,7 +17333,7 @@
     "publicRating": {
       "value": 8.2,
       "scale": 10,
-      "votes": 21812,
+      "votes": 21818,
       "source": "TMDB"
     },
     "score": 8.2,
@@ -17381,7 +17381,7 @@
     "publicRating": {
       "value": 7.3,
       "scale": 10,
-      "votes": 468,
+      "votes": 506,
       "source": "TMDB"
     },
     "score": 7.3,
@@ -17426,12 +17426,12 @@
     "year": 2026,
     "ageRating": null,
     "publicRating": {
-      "value": 5.8,
+      "value": 5.6,
       "scale": 10,
-      "votes": 77,
+      "votes": 93,
       "source": "TMDB"
     },
-    "score": 5.8,
+    "score": 5.6,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -17480,7 +17480,7 @@
     "publicRating": {
       "value": 6.4,
       "scale": 10,
-      "votes": 102,
+      "votes": 107,
       "source": "TMDB"
     },
     "score": 6.4,
@@ -17528,7 +17528,7 @@
     "publicRating": {
       "value": 8,
       "scale": 10,
-      "votes": 4391,
+      "votes": 4453,
       "source": "TMDB"
     },
     "score": 8,
@@ -17541,7 +17541,7 @@
     "keywords": [],
     "synopsis": "Odysseus, the legendary King of Ithaca, embarks on a long and perilous journey home following the Trojan War. Throughout his voyage, he is forced to confront the whims of gods, mythological monsters, and trials that stretch both his cunning and his humanity to the breaking point.",
     "tagline": "",
-    "posterUrl": "https://image.tmdb.org/t/p/w342/krVa7rKCQb4OBfsr2LTJv4rTz5q.jpg",
+    "posterUrl": "https://image.tmdb.org/t/p/w342/5rhTDKUhPYvpdQIijFIs5VoWsON.jpg",
     "backdropUrl": "https://image.tmdb.org/t/p/w780/iDiTY1wA35YWzTmXLTtqaxtN6tc.jpg",
     "platforms": [],
     "platformRegion": "",
@@ -17575,7 +17575,7 @@
     "publicRating": {
       "value": 7,
       "scale": 10,
-      "votes": 621,
+      "votes": 642,
       "source": "TMDB"
     },
     "score": 7,
@@ -17624,7 +17624,7 @@
     "publicRating": {
       "value": 7.7,
       "scale": 10,
-      "votes": 134,
+      "votes": 144,
       "source": "TMDB"
     },
     "score": 7.7,
@@ -17670,7 +17670,7 @@
     "publicRating": {
       "value": 7.3,
       "scale": 10,
-      "votes": 752,
+      "votes": 756,
       "source": "TMDB"
     },
     "score": 7.3,
@@ -17718,12 +17718,12 @@
     "year": 2026,
     "ageRating": null,
     "publicRating": {
-      "value": 8.2,
+      "value": 8,
       "scale": 10,
-      "votes": 78,
+      "votes": 101,
       "source": "TMDB"
     },
-    "score": 8.2,
+    "score": 8,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -17770,7 +17770,7 @@
     "publicRating": {
       "value": 6.9,
       "scale": 10,
-      "votes": 255,
+      "votes": 258,
       "source": "TMDB"
     },
     "score": 6.9,
@@ -17820,7 +17820,7 @@
     "publicRating": {
       "value": 6.4,
       "scale": 10,
-      "votes": 68,
+      "votes": 79,
       "source": "TMDB"
     },
     "score": 6.4,
@@ -17871,7 +17871,7 @@
     "publicRating": {
       "value": 9.1,
       "scale": 10,
-      "votes": 504,
+      "votes": 506,
       "source": "TMDB"
     },
     "score": 9.1,
@@ -17921,7 +17921,7 @@
     "publicRating": {
       "value": 9,
       "scale": 10,
-      "votes": 1422,
+      "votes": 1426,
       "source": "TMDB"
     },
     "score": 9,
@@ -17971,7 +17971,7 @@
     "publicRating": {
       "value": 8.8,
       "scale": 10,
-      "votes": 2288,
+      "votes": 2292,
       "source": "TMDB"
     },
     "score": 8.8,
@@ -18068,7 +18068,7 @@
     "publicRating": {
       "value": 8.8,
       "scale": 10,
-      "votes": 2378,
+      "votes": 2380,
       "source": "TMDB"
     },
     "score": 8.8,
@@ -18165,7 +18165,7 @@
     "publicRating": {
       "value": 8.7,
       "scale": 10,
-      "votes": 31792,
+      "votes": 31799,
       "source": "TMDB"
     },
     "score": 8.7,
@@ -18213,7 +18213,7 @@
     "publicRating": {
       "value": 8.7,
       "scale": 10,
-      "votes": 23934,
+      "votes": 23939,
       "source": "TMDB"
     },
     "score": 8.7,
@@ -18227,7 +18227,7 @@
     "synopsis": "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.",
     "tagline": "",
     "posterUrl": "https://image.tmdb.org/t/p/w342/3bhkrj58Vtu7enYsRolD1fZdja1.jpg",
-    "backdropUrl": "https://image.tmdb.org/t/p/w780/ejdD20cdHNFAYAN2DlqPToXKyzx.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w780/tSPT36ZKlP2WVHJLM4cQPLSzv3b.jpg",
     "platforms": [],
     "platformRegion": "",
     "watchRegions": [],
@@ -18260,7 +18260,7 @@
     "publicRating": {
       "value": 8.6,
       "scale": 10,
-      "votes": 333,
+      "votes": 334,
       "source": "TMDB"
     },
     "score": 8.6,
@@ -18307,7 +18307,7 @@
     "publicRating": {
       "value": 8.6,
       "scale": 10,
-      "votes": 4685,
+      "votes": 4691,
       "source": "TMDB"
     },
     "score": 8.6,
@@ -18352,7 +18352,7 @@
     "publicRating": {
       "value": 8.6,
       "scale": 10,
-      "votes": 10573,
+      "votes": 10576,
       "source": "TMDB"
     },
     "score": 8.6,
@@ -18401,7 +18401,7 @@
     "publicRating": {
       "value": 8.6,
       "scale": 10,
-      "votes": 321,
+      "votes": 322,
       "source": "TMDB"
     },
     "score": 8.6,
@@ -18449,7 +18449,7 @@
     "publicRating": {
       "value": 8.6,
       "scale": 10,
-      "votes": 14582,
+      "votes": 14585,
       "source": "TMDB"
     },
     "score": 8.6,
@@ -18498,7 +18498,7 @@
     "publicRating": {
       "value": 8.6,
       "scale": 10,
-      "votes": 18157,
+      "votes": 18160,
       "source": "TMDB"
     },
     "score": 8.6,
@@ -18549,7 +18549,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 1280,
+      "votes": 1283,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -18598,7 +18598,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 19192,
+      "votes": 19194,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -18646,7 +18646,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 27774,
+      "votes": 27780,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -18696,7 +18696,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 20099,
+      "votes": 20105,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -18725,7 +18725,7 @@
     "source": "movies",
     "id": "1422041",
     "type": "movie",
-    "title": "LA BOLA NEGRA",
+    "title": "La Bola Negra",
     "originalTitle": "La bola negra",
     "genres": [
       "Drama",
@@ -18744,7 +18744,7 @@
     "publicRating": {
       "value": 8.1,
       "scale": 10,
-      "votes": 188,
+      "votes": 194,
       "source": "TMDB"
     },
     "score": 8.1,
@@ -18757,7 +18757,7 @@
     "keywords": [],
     "synopsis": "The intertwined lives of three men in three different eras, three lives intimately linked by sexuality and desire, pain, and legacy.",
     "tagline": "",
-    "posterUrl": "https://image.tmdb.org/t/p/w342/jT5SR5qc9KvVg7HUEmjMWEUYMce.jpg",
+    "posterUrl": "https://image.tmdb.org/t/p/w342/7HwFQTMghL6HOvzEnXYUvyuZXeh.jpg",
     "backdropUrl": "https://image.tmdb.org/t/p/w780/bDsmYvrzto7xrEwqDpLC3SPhn9A.jpg",
     "platforms": [],
     "platformRegion": "",
@@ -18793,7 +18793,7 @@
     "publicRating": {
       "value": 6.2,
       "scale": 10,
-      "votes": 42,
+      "votes": 46,
       "source": "TMDB"
     },
     "score": 6.2,
@@ -18843,7 +18843,7 @@
     "publicRating": {
       "value": 6.4,
       "scale": 10,
-      "votes": 162,
+      "votes": 166,
       "source": "TMDB"
     },
     "score": 6.4,
@@ -18891,7 +18891,7 @@
     "publicRating": {
       "value": 6.8,
       "scale": 10,
-      "votes": 352,
+      "votes": 379,
       "source": "TMDB"
     },
     "score": 6.8,
@@ -18934,12 +18934,12 @@
     "year": 2026,
     "ageRating": null,
     "publicRating": {
-      "value": 5.3,
+      "value": 6.2,
       "scale": 10,
-      "votes": 20,
+      "votes": 26,
       "source": "TMDB"
     },
-    "score": 5.3,
+    "score": 6.2,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -19031,7 +19031,7 @@
     "publicRating": {
       "value": 7.7,
       "scale": 10,
-      "votes": 1027,
+      "votes": 1031,
       "source": "TMDB"
     },
     "score": 7.7,
@@ -19076,7 +19076,7 @@
     "publicRating": {
       "value": 7.5,
       "scale": 10,
-      "votes": 124,
+      "votes": 125,
       "source": "TMDB"
     },
     "score": 7.5,
@@ -19126,7 +19126,7 @@
     "publicRating": {
       "value": 7.4,
       "scale": 10,
-      "votes": 403,
+      "votes": 408,
       "source": "TMDB"
     },
     "score": 7.4,
@@ -19183,8 +19183,8 @@
     "keywords": [],
     "synopsis": "Beloved heroes from three distinct universes are set on a deadly collision course and face an existential threat unlike anything they've ever encountered.",
     "tagline": "",
-    "posterUrl": "https://image.tmdb.org/t/p/w342/zHTxblqPcqRpA93ex2Hj0RdpVBs.jpg",
-    "backdropUrl": "https://image.tmdb.org/t/p/w780/4NxnrRmI7goXMsRASwSegf50MC8.jpg",
+    "posterUrl": "https://image.tmdb.org/t/p/w342/9jlZ59UALLLOE279HMT19rP9XQs.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w780/rObL4of4eFA8yWaN9pRFo9aOVNi.jpg",
     "platforms": [],
     "platformRegion": "",
     "watchRegions": [],
@@ -19216,12 +19216,12 @@
     "year": 2026,
     "ageRating": null,
     "publicRating": {
-      "value": 8.3,
+      "value": 7.9,
       "scale": 10,
-      "votes": 21,
+      "votes": 29,
       "source": "TMDB"
     },
-    "score": 8.3,
+    "score": 7.9,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -19266,7 +19266,7 @@
     "publicRating": {
       "value": 8.2,
       "scale": 10,
-      "votes": 6535,
+      "votes": 6549,
       "source": "TMDB"
     },
     "score": 8.2,
@@ -19315,7 +19315,7 @@
     "publicRating": {
       "value": 7.2,
       "scale": 10,
-      "votes": 914,
+      "votes": 931,
       "source": "TMDB"
     },
     "score": 7.2,
@@ -19364,7 +19364,7 @@
     "publicRating": {
       "value": 7.9,
       "scale": 10,
-      "votes": 10909,
+      "votes": 10914,
       "source": "TMDB"
     },
     "score": 7.9,
@@ -19412,7 +19412,7 @@
     "publicRating": {
       "value": 6.1,
       "scale": 10,
-      "votes": 54,
+      "votes": 55,
       "source": "TMDB"
     },
     "score": 6.1,
@@ -19462,7 +19462,7 @@
     "publicRating": {
       "value": 7.6,
       "scale": 10,
-      "votes": 600,
+      "votes": 606,
       "source": "TMDB"
     },
     "score": 7.6,
@@ -19510,7 +19510,7 @@
     "publicRating": {
       "value": 4,
       "scale": 10,
-      "votes": 1192,
+      "votes": 1194,
       "source": "TMDB"
     },
     "score": 4,
@@ -19555,7 +19555,7 @@
     "publicRating": {
       "value": 7.1,
       "scale": 10,
-      "votes": 30,
+      "votes": 32,
       "source": "TMDB"
     },
     "score": 7.1,
@@ -19606,7 +19606,7 @@
     "publicRating": {
       "value": 8.2,
       "scale": 10,
-      "votes": 1387,
+      "votes": 1414,
       "source": "TMDB"
     },
     "score": 8.2,
@@ -19704,7 +19704,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 41811,
+      "votes": 41821,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -19752,7 +19752,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 13183,
+      "votes": 13184,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -19803,7 +19803,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 21653,
+      "votes": 21659,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -19854,7 +19854,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 31271,
+      "votes": 31279,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -19948,7 +19948,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 10121,
+      "votes": 10125,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -20044,7 +20044,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 30838,
+      "votes": 30845,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -20092,7 +20092,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 14995,
+      "votes": 14999,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -20187,12 +20187,12 @@
     "year": 1988,
     "ageRating": null,
     "publicRating": {
-      "value": 8.5,
+      "value": 8.4,
       "scale": 10,
-      "votes": 6948,
+      "votes": 6950,
       "source": "TMDB"
     },
-    "score": 8.5,
+    "score": 8.4,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -20237,7 +20237,7 @@
     "publicRating": {
       "value": 8.5,
       "scale": 10,
-      "votes": 28809,
+      "votes": 28814,
       "source": "TMDB"
     },
     "score": 8.5,
@@ -20333,7 +20333,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 33278,
+      "votes": 33286,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -20381,7 +20381,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 14383,
+      "votes": 14385,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -20428,7 +20428,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 5043,
+      "votes": 5046,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -20476,7 +20476,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 24929,
+      "votes": 24933,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -20524,7 +20524,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 8605,
+      "votes": 8607,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -20619,7 +20619,7 @@
     "publicRating": {
       "value": 7.6,
       "scale": 10,
-      "votes": 1042,
+      "votes": 1046,
       "source": "TMDB"
     },
     "score": 7.6,
@@ -20670,7 +20670,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 2822,
+      "votes": 2836,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -20720,12 +20720,12 @@
     "year": 2026,
     "ageRating": null,
     "publicRating": {
-      "value": 8,
+      "value": 7.9,
       "scale": 10,
-      "votes": 213,
+      "votes": 227,
       "source": "TMDB"
     },
-    "score": 8,
+    "score": 7.9,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -20772,7 +20772,7 @@
     "publicRating": {
       "value": 7.2,
       "scale": 10,
-      "votes": 377,
+      "votes": 381,
       "source": "TMDB"
     },
     "score": 7.2,
@@ -20815,7 +20815,7 @@
     "publicRating": {
       "value": 8.9,
       "scale": 10,
-      "votes": 97,
+      "votes": 98,
       "source": "TMDB"
     },
     "score": 8.9,
@@ -20860,7 +20860,7 @@
     "publicRating": {
       "value": 5.8,
       "scale": 10,
-      "votes": 198,
+      "votes": 201,
       "source": "TMDB"
     },
     "score": 5.8,
@@ -20952,7 +20952,7 @@
     "publicRating": {
       "value": 6.3,
       "scale": 10,
-      "votes": 223,
+      "votes": 224,
       "source": "TMDB"
     },
     "score": 6.3,
@@ -20985,12 +20985,14 @@
     "originalTitle": "",
     "genres": [
       "Action",
-      "Comedy"
+      "Comedy",
+      "Thriller"
     ],
     "moods": [
       "Feel-good",
       "Funny",
-      "Thrilling"
+      "Thrilling",
+      "Mind-bending"
     ],
     "franchise": null,
     "franchiseSource": null,
@@ -21000,7 +21002,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 806,
+      "votes": 813,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -21046,7 +21048,7 @@
     "publicRating": {
       "value": 5.7,
       "scale": 10,
-      "votes": 160,
+      "votes": 169,
       "source": "TMDB"
     },
     "score": 5.7,
@@ -21097,7 +21099,7 @@
     "publicRating": {
       "value": 8.1,
       "scale": 10,
-      "votes": 68,
+      "votes": 92,
       "source": "TMDB"
     },
     "score": 8.1,
@@ -21111,7 +21113,7 @@
     "synopsis": "Shortly before the 1973 Chilean coup, CIA agents Chris and Lee are dispatched from Santiago to Easter Island by their bureau chief, MJ. Amongst the Island's iconic statues, and as the longtime partners wrestle with their dark pasts and present conspiracies, Chris's newfound bond with a pair of rebellious students threatens to send everyone’s trip to this remote paradise sideways.",
     "tagline": "",
     "posterUrl": "https://image.tmdb.org/t/p/w342/dNJFRtVg3xLQ7dbNIQ55cmmIniD.jpg",
-    "backdropUrl": "https://image.tmdb.org/t/p/w780/b17UWf3LqHgKolQkXckne32qv0.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w780/3uLA0ujne91bkzFStZICCYeqhnt.jpg",
     "platforms": [],
     "platformRegion": "",
     "watchRegions": [],
@@ -21129,10 +21131,9 @@
     "title": "Your Mother Your Mother Your Mother",
     "originalTitle": "",
     "genres": [
+      "Drama",
       "Crime",
-      "Thriller",
-      "Action",
-      "Drama"
+      "Thriller"
     ],
     "moods": [
       "Thrilling",
@@ -21146,12 +21147,12 @@
     "year": 2026,
     "ageRating": null,
     "publicRating": {
-      "value": 6.8,
+      "value": 6.7,
       "scale": 10,
-      "votes": 38,
+      "votes": 43,
       "source": "TMDB"
     },
-    "score": 6.8,
+    "score": 6.7,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -21195,7 +21196,7 @@
     "publicRating": {
       "value": 7.3,
       "scale": 10,
-      "votes": 153,
+      "votes": 157,
       "source": "TMDB"
     },
     "score": 7.3,
@@ -21243,7 +21244,7 @@
     "publicRating": {
       "value": 7.4,
       "scale": 10,
-      "votes": 3966,
+      "votes": 3978,
       "source": "TMDB"
     },
     "score": 7.4,
@@ -21294,7 +21295,7 @@
     "publicRating": {
       "value": 7.5,
       "scale": 10,
-      "votes": 1022,
+      "votes": 1028,
       "source": "TMDB"
     },
     "score": 7.5,
@@ -21326,9 +21327,11 @@
     "title": "Possible Love",
     "originalTitle": "가능한 사랑",
     "genres": [
-      "Drama"
+      "Drama",
+      "Romance"
     ],
     "moods": [
+      "Feel-good",
       "Heartfelt"
     ],
     "franchise": null,
@@ -21337,12 +21340,12 @@
     "year": 2026,
     "ageRating": null,
     "publicRating": {
-      "value": 7.4,
+      "value": 7.6,
       "scale": 10,
-      "votes": 25,
+      "votes": 42,
       "source": "TMDB"
     },
-    "score": 7.4,
+    "score": 7.6,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -21382,12 +21385,12 @@
     "year": 2025,
     "ageRating": null,
     "publicRating": {
-      "value": 7.3,
+      "value": 7.2,
       "scale": 10,
-      "votes": 6,
+      "votes": 10,
       "source": "TMDB"
     },
-    "score": 7.3,
+    "score": 7.2,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -21435,7 +21438,7 @@
     "publicRating": {
       "value": 6.9,
       "scale": 10,
-      "votes": 719,
+      "votes": 726,
       "source": "TMDB"
     },
     "score": 6.9,
@@ -21482,7 +21485,7 @@
     "publicRating": {
       "value": 6.8,
       "scale": 10,
-      "votes": 236,
+      "votes": 237,
       "source": "TMDB"
     },
     "score": 6.8,
@@ -21579,7 +21582,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 582,
+      "votes": 583,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -21628,7 +21631,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 11417,
+      "votes": 11422,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -21679,7 +21682,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 18164,
+      "votes": 18170,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -21724,7 +21727,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 11950,
+      "votes": 11952,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -21823,7 +21826,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 4764,
+      "votes": 4765,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -21917,7 +21920,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 19097,
+      "votes": 19104,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -21965,7 +21968,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 11649,
+      "votes": 11650,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -22012,7 +22015,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 646,
+      "votes": 647,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -22063,7 +22066,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 1231,
+      "votes": 1234,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -22112,7 +22115,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 24161,
+      "votes": 24174,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -22209,7 +22212,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 17355,
+      "votes": 17361,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -22259,7 +22262,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 40677,
+      "votes": 40687,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -22307,7 +22310,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 10609,
+      "votes": 10614,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -22355,7 +22358,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 6309,
+      "votes": 6313,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -22406,7 +22409,7 @@
     "publicRating": {
       "value": 8.4,
       "scale": 10,
-      "votes": 1609,
+      "votes": 1610,
       "source": "TMDB"
     },
     "score": 8.4,
@@ -22454,7 +22457,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 1015,
+      "votes": 1016,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -22505,7 +22508,7 @@
     "publicRating": {
       "value": 8,
       "scale": 10,
-      "votes": 9731,
+      "votes": 9740,
       "source": "TMDB"
     },
     "score": 8,
@@ -22554,7 +22557,7 @@
     "publicRating": {
       "value": 8.2,
       "scale": 10,
-      "votes": 87,
+      "votes": 88,
       "source": "TMDB"
     },
     "score": 8.2,
@@ -22797,7 +22800,7 @@
     "publicRating": {
       "value": 8.2,
       "scale": 10,
-      "votes": 33352,
+      "votes": 33357,
       "source": "TMDB"
     },
     "score": 8.2,
@@ -22894,7 +22897,7 @@
     "publicRating": {
       "value": 7.5,
       "scale": 10,
-      "votes": 34,
+      "votes": 36,
       "source": "TMDB"
     },
     "score": 7.5,
@@ -22990,7 +22993,7 @@
     "publicRating": {
       "value": 7,
       "scale": 10,
-      "votes": 4029,
+      "votes": 4044,
       "source": "TMDB"
     },
     "score": 7,
@@ -23035,12 +23038,12 @@
     "year": 2026,
     "ageRating": null,
     "publicRating": {
-      "value": 5.7,
+      "value": 5.8,
       "scale": 10,
-      "votes": 31,
+      "votes": 33,
       "source": "TMDB"
     },
-    "score": 5.7,
+    "score": 5.8,
     "episodes": null,
     "seasons": [],
     "showStatus": "",
@@ -23086,7 +23089,7 @@
     "publicRating": {
       "value": 8.2,
       "scale": 10,
-      "votes": 29238,
+      "votes": 29242,
       "source": "TMDB"
     },
     "score": 8.2,
@@ -23183,7 +23186,7 @@
     "publicRating": {
       "value": 6.8,
       "scale": 10,
-      "votes": 134,
+      "votes": 138,
       "source": "TMDB"
     },
     "score": 6.8,
@@ -23232,7 +23235,7 @@
     "publicRating": {
       "value": 7.6,
       "scale": 10,
-      "votes": 10638,
+      "votes": 10644,
       "source": "TMDB"
     },
     "score": 7.6,
@@ -23283,7 +23286,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 9519,
+      "votes": 9522,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -23333,7 +23336,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 18812,
+      "votes": 18816,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -23474,7 +23477,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 7482,
+      "votes": 7485,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -23524,7 +23527,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 22722,
+      "votes": 22727,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -23616,7 +23619,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 13115,
+      "votes": 13121,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -23664,7 +23667,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 9450,
+      "votes": 9451,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -23760,7 +23763,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 6830,
+      "votes": 6832,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -23857,7 +23860,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 665,
+      "votes": 673,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -23997,7 +24000,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 13150,
+      "votes": 13153,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -24046,7 +24049,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 16770,
+      "votes": 16772,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -24144,7 +24147,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 1043,
+      "votes": 1045,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -24193,7 +24196,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 3868,
+      "votes": 3869,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -24244,7 +24247,7 @@
     "publicRating": {
       "value": 7.6,
       "scale": 10,
-      "votes": 9796,
+      "votes": 9802,
       "source": "TMDB"
     },
     "score": 7.6,
@@ -24296,7 +24299,7 @@
     "publicRating": {
       "value": 7.5,
       "scale": 10,
-      "votes": 1374,
+      "votes": 1383,
       "source": "TMDB"
     },
     "score": 7.5,
@@ -24342,7 +24345,7 @@
     "publicRating": {
       "value": 7.8,
       "scale": 10,
-      "votes": 225,
+      "votes": 229,
       "source": "TMDB"
     },
     "score": 7.8,
@@ -24489,7 +24492,7 @@
     "publicRating": {
       "value": 6.6,
       "scale": 10,
-      "votes": 140,
+      "votes": 141,
       "source": "TMDB"
     },
     "score": 6.6,
@@ -24539,7 +24542,7 @@
     "publicRating": {
       "value": 7.6,
       "scale": 10,
-      "votes": 3596,
+      "votes": 3607,
       "source": "TMDB"
     },
     "score": 7.6,
@@ -24644,7 +24647,7 @@
     "publicRating": {
       "value": 7.7,
       "scale": 10,
-      "votes": 3657,
+      "votes": 3661,
       "source": "TMDB"
     },
     "score": 7.7,
@@ -24692,7 +24695,7 @@
     "publicRating": {
       "value": 7.6,
       "scale": 10,
-      "votes": 4659,
+      "votes": 4665,
       "source": "TMDB"
     },
     "score": 7.6,
@@ -24741,7 +24744,7 @@
     "publicRating": {
       "value": 6.1,
       "scale": 10,
-      "votes": 394,
+      "votes": 395,
       "source": "TMDB"
     },
     "score": 6.1,
@@ -24791,7 +24794,7 @@
     "publicRating": {
       "value": 8.2,
       "scale": 10,
-      "votes": 1527,
+      "votes": 1533,
       "source": "TMDB"
     },
     "score": 8.2,
@@ -24838,7 +24841,7 @@
     "publicRating": {
       "value": 8.1,
       "scale": 10,
-      "votes": 8918,
+      "votes": 8927,
       "source": "TMDB"
     },
     "score": 8.1,
@@ -24887,7 +24890,7 @@
     "publicRating": {
       "value": 7.1,
       "scale": 10,
-      "votes": 2334,
+      "votes": 2340,
       "source": "TMDB"
     },
     "score": 7.1,
@@ -24980,7 +24983,7 @@
     "publicRating": {
       "value": 8.2,
       "scale": 10,
-      "votes": 11870,
+      "votes": 11876,
       "source": "TMDB"
     },
     "score": 8.2,
@@ -25321,7 +25324,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 19038,
+      "votes": 19042,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -25516,7 +25519,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 29188,
+      "votes": 29195,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -25611,7 +25614,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 9536,
+      "votes": 9538,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -25659,7 +25662,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 3432,
+      "votes": 3433,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -25807,7 +25810,7 @@
     "publicRating": {
       "value": 8.3,
       "scale": 10,
-      "votes": 2394,
+      "votes": 2396,
       "source": "TMDB"
     },
     "score": 8.3,
@@ -25929,6 +25932,296 @@
     "externalIds": {
       "imdb": "",
       "tmdb": "92321",
+      "tvdb": ""
+    }
+  },
+  {
+    "key": "movies:656908",
+    "source": "movies",
+    "id": "656908",
+    "type": "movie",
+    "title": "Ramayana: Rise of a Legend",
+    "originalTitle": "रामायणम्",
+    "genres": [
+      "Fantasy",
+      "Action",
+      "Adventure"
+    ],
+    "moods": [
+      "Thrilling",
+      "Epic"
+    ],
+    "franchise": null,
+    "franchiseSource": null,
+    "collection": null,
+    "year": 2026,
+    "ageRating": null,
+    "publicRating": {
+      "value": 7.9,
+      "scale": 10,
+      "votes": 21,
+      "source": "TMDB"
+    },
+    "score": 7.9,
+    "episodes": null,
+    "seasons": [],
+    "showStatus": "",
+    "lengthMinutes": null,
+    "creators": [],
+    "studios": [],
+    "keywords": [],
+    "synopsis": "An ancient epic follows a young prince and princess whose marriage and subsequent exile mark the beginning of a legendary journey. Their story of love, duty and destiny sets the stage for greater challenges ahead.",
+    "tagline": "",
+    "posterUrl": "https://image.tmdb.org/t/p/w342/dPrtk4iNf6T5w8fWfg4uxDDbJSW.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w780/yHVZncPRZr63mezRX20IyKLrSkv.jpg",
+    "platforms": [],
+    "platformRegion": "",
+    "watchRegions": [],
+    "externalIds": {
+      "imdb": "",
+      "tmdb": "656908",
+      "tvdb": ""
+    }
+  },
+  {
+    "key": "movies:1117898",
+    "source": "movies",
+    "id": "1117898",
+    "type": "movie",
+    "title": "The Cat in the Hat",
+    "originalTitle": "",
+    "genres": [
+      "Animation",
+      "Fantasy",
+      "Adventure",
+      "Family",
+      "Comedy"
+    ],
+    "moods": [
+      "Feel-good",
+      "Funny",
+      "Heartfelt",
+      "Epic"
+    ],
+    "franchise": null,
+    "franchiseSource": null,
+    "collection": null,
+    "year": 2026,
+    "ageRating": null,
+    "publicRating": {
+      "value": 7.2,
+      "scale": 10,
+      "votes": 16,
+      "source": "TMDB"
+    },
+    "score": 7.2,
+    "episodes": null,
+    "seasons": [],
+    "showStatus": "",
+    "lengthMinutes": null,
+    "creators": [],
+    "studios": [],
+    "keywords": [],
+    "synopsis": "Assigned his toughest mission yet, the Cat must cheer up siblings Gabby and Sebastian as they adjust to life in a new town. Known for pushing boundaries, this agent of chaos must prove himself or risk losing his magical hat forever.",
+    "tagline": "",
+    "posterUrl": "https://image.tmdb.org/t/p/w342/mWN6knIVJ2o7eGwSm7mOgSCwNUc.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w780/9y9o686DsQg0KzPtERzcW7Cf8IE.jpg",
+    "platforms": [],
+    "platformRegion": "",
+    "watchRegions": [],
+    "externalIds": {
+      "imdb": "",
+      "tmdb": "1117898",
+      "tvdb": ""
+    }
+  },
+  {
+    "key": "movies:1766192",
+    "source": "movies",
+    "id": "1766192",
+    "type": "movie",
+    "title": "Insidious Rewind",
+    "originalTitle": "",
+    "genres": [
+      "Horror"
+    ],
+    "moods": [
+      "Dark"
+    ],
+    "franchise": null,
+    "franchiseSource": null,
+    "collection": null,
+    "year": null,
+    "ageRating": null,
+    "publicRating": null,
+    "score": null,
+    "episodes": null,
+    "seasons": [],
+    "showStatus": "",
+    "lengthMinutes": null,
+    "creators": [],
+    "studios": [],
+    "keywords": [],
+    "synopsis": "Searching for her missing brother, a young woman traces his final signal to an abandoned warehouse, where she discovers a collection of cursed VHS tapes. Captured and forced to watch, she endures four found-footage nightmares that may reveal what happened to him—and what now awaits her.",
+    "tagline": "",
+    "posterUrl": "https://image.tmdb.org/t/p/w342/AeeAAx83NSPSqBO66hjbQrZGvFb.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w780/n3McMv40zcn4rZyUHrL3UVKGWQa.jpg",
+    "platforms": [],
+    "platformRegion": "",
+    "watchRegions": [],
+    "externalIds": {
+      "imdb": "",
+      "tmdb": "1766192",
+      "tvdb": ""
+    }
+  },
+  {
+    "key": "movies:1697911",
+    "source": "movies",
+    "id": "1697911",
+    "type": "movie",
+    "title": "Drummer Boy",
+    "originalTitle": "",
+    "genres": [
+      "War",
+      "Romance",
+      "Music"
+    ],
+    "moods": [
+      "Feel-good",
+      "Dark",
+      "Heartfelt",
+      "Epic"
+    ],
+    "franchise": null,
+    "franchiseSource": null,
+    "collection": null,
+    "year": 2026,
+    "ageRating": null,
+    "publicRating": {
+      "value": 7.8,
+      "scale": 10,
+      "votes": 5,
+      "source": "TMDB"
+    },
+    "score": 7.8,
+    "episodes": null,
+    "seasons": [],
+    "showStatus": "",
+    "lengthMinutes": null,
+    "creators": [],
+    "studios": [],
+    "keywords": [],
+    "synopsis": "As America’s fight for independence begins, a young drummer boy, an enslaved woman, and a divided family search for freedom. Through battle and loss, music carries hope in a deeply human story of faith and forgiveness.",
+    "tagline": "",
+    "posterUrl": "https://image.tmdb.org/t/p/w342/bhjdgMm2fFrysSzVqv5RwRwIbVf.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w780/5KF459N6jOfRV7kV9XV7ZQdCLKK.jpg",
+    "platforms": [],
+    "platformRegion": "",
+    "watchRegions": [],
+    "externalIds": {
+      "imdb": "",
+      "tmdb": "1697911",
+      "tvdb": ""
+    }
+  },
+  {
+    "key": "movies:822653",
+    "source": "movies",
+    "id": "822653",
+    "type": "movie",
+    "title": "Puella Magi Madoka Magica the Movie -Walpurgisnacht: Rising-",
+    "originalTitle": "劇場版 魔法少女まどか☆マギカ〈ワルプルギスの廻天〉",
+    "genres": [
+      "Animation",
+      "Drama",
+      "Mystery",
+      "Fantasy"
+    ],
+    "moods": [
+      "Feel-good",
+      "Thrilling",
+      "Heartfelt",
+      "Mind-bending",
+      "Epic"
+    ],
+    "franchise": null,
+    "franchiseSource": null,
+    "collection": null,
+    "year": 2026,
+    "ageRating": null,
+    "publicRating": {
+      "value": 8,
+      "scale": 10,
+      "votes": 5,
+      "source": "TMDB"
+    },
+    "score": 8,
+    "episodes": null,
+    "seasons": [],
+    "showStatus": "",
+    "lengthMinutes": null,
+    "creators": [],
+    "studios": [],
+    "keywords": [],
+    "synopsis": "After the events of Rebellion, the world appears to be in balance—but that peace is fragile. As a new threat connected to Walpurgisnacht emerges, Homura Akemi is forced to face the consequences of her choices and question how far she is willing to go to protect Madoka.",
+    "tagline": "",
+    "posterUrl": "https://image.tmdb.org/t/p/w342/g4kCd4rMuN7G3VQQDUT6mLbrBqQ.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w780/xzm3RfWh932rS28WErNC3u8qzVm.jpg",
+    "platforms": [],
+    "platformRegion": "",
+    "watchRegions": [],
+    "externalIds": {
+      "imdb": "",
+      "tmdb": "822653",
+      "tvdb": ""
+    }
+  },
+  {
+    "key": "movies:20941",
+    "source": "movies",
+    "id": "20941",
+    "type": "movie",
+    "title": "Innocent Voices",
+    "originalTitle": "Voces inocentes",
+    "genres": [
+      "Drama",
+      "War"
+    ],
+    "moods": [
+      "Dark",
+      "Heartfelt",
+      "Epic"
+    ],
+    "franchise": null,
+    "franchiseSource": null,
+    "collection": null,
+    "year": 2005,
+    "ageRating": null,
+    "publicRating": {
+      "value": 8.2,
+      "scale": 10,
+      "votes": 559,
+      "source": "TMDB"
+    },
+    "score": 8.2,
+    "episodes": null,
+    "seasons": [],
+    "showStatus": "",
+    "lengthMinutes": null,
+    "creators": [],
+    "studios": [],
+    "keywords": [],
+    "synopsis": "A young boy, attempting to have a normal childhood in 1980s El Salvador, is caught up in a dramatic fight for his life when he desperately tries to avoid the war that is raging all around him.",
+    "tagline": "",
+    "posterUrl": "https://image.tmdb.org/t/p/w342/hvwB4LdMCLzqXsk5ZjR77vzPkGk.jpg",
+    "backdropUrl": "https://image.tmdb.org/t/p/w780/oaUWMPGxpb4OsVCrppmlhQA2bwb.jpg",
+    "platforms": [],
+    "platformRegion": "",
+    "watchRegions": [],
+    "externalIds": {
+      "imdb": "",
+      "tmdb": "20941",
       "tvdb": ""
     }
   }

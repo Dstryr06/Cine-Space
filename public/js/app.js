@@ -317,12 +317,12 @@ async function showActivity() {
 // ---------- randomizer ----------
 // opts.defaults: { scope, type, mood, genre, franchise, tag } pre-filled from the current page's filters
 export function openRandomizer(opts = {}) {
-    const d = { scope: "to_watch", type: "", mood: "", genre: "", ...opts.defaults };
+    const d = { scope: "any", type: "", mood: "", genre: "", ...opts.defaults };
     const m = openModal({
     title: "What should I watch?", wide: true,
     html: `<div class="rnd-opts">
         <div class="field"><label for="rScope">Pick from</label><select class="select" id="rScope">
-        <option value="to_watch">My To Watch list</option><option value="any">Everything in my library</option><option value="catalog">Discover: titles I haven't saved</option></select></div>
+        <option value="any">My library</option><option value="catalog">Discover: titles I haven't saved</option></select></div>
         <div class="field"><label for="rType">Type</label><select class="select" id="rType"><option value="">Any type</option><option value="movie">Movies</option><option value="series">TV shows</option><option value="anime">Anime</option></select></div>
         <div class="field"><label for="rMood">Mood</label><select class="select" id="rMood"><option value="">Any mood</option>${MOODS.map(x => `<option>${x}</option>`).join("")}</select></div>
     </div>
@@ -337,7 +337,7 @@ export function openRandomizer(opts = {}) {
     const stage = $s("#rStage");
     stage.innerHTML = `<div class="rolling">${icon("dice")}</div>`;
     const scope = $s("#rScope").value;
-    const p = new URLSearchParams({ scope: scope === "catalog" ? "catalog" : "library", status: scope === "any" ? "any" : "to_watch" });
+    const p = new URLSearchParams({ scope: scope === "catalog" ? "catalog" : "library", status: "any" });
     if (scope === "catalog") p.delete("status");
     for (const [k, id] of [["type", "#rType"], ["mood", "#rMood"]]) if ($s(id).value) p.set(k, $s(id).value);
     for (const k of ["genre", "franchise", "tag"]) if (opts.defaults?.[k]) p.set(k, opts.defaults[k]);
