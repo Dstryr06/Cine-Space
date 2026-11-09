@@ -44,6 +44,22 @@ test("auth: validation, login, wrong password, protected routes", async () => {
   assert.equal((await call("GET", "/api/search?q=iron", undefined, null)).status, 401);
 });
 
+test("auth: 5 wrong passwords lock login for 1 minute, then every 3 more add 5 minutes", async () => {
+  const wrong = () => call("POST", "/api/auth/login", { username: "lockme", password: "nope" }, null);
+  for (let i = 0; i < 5; i++) assert.equal((await wrong()).status, 401);
+  const first = await wrong();
+  assert.equal(first.status, 429);
+  assert.match(first.body.errors[0], /1 minute/);
+  const realNow = Date.now; let skip = 61 * 1000;
+  Date.now = () => realNow() + skip;                                  // jump past the 1 minute lock instead of waiting
+  try {
+    for (let i = 0; i < 3; i++) assert.equal((await wrong()).status, 401);
+    const second = await wrong();
+    assert.equal(second.status, 429);
+    assert.match(second.body.errors[0], /6 minute/);                  // 1 + 5
+  } finally { Date.now = realNow; }
+});
+
 test("sign-up: usernames must be unique (any letter case) and say so", async () => {
   for (const name of ["tester", "TESTER", "  Tester "]) {
     const r = await call("POST", "/api/auth/register", { username: name, password: PW }, null);

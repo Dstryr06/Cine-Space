@@ -3,7 +3,7 @@
 import { api, ApiError, mountShell, requireLogin, esc, $, $$, icon, stars, STATUS, STATUS_KEYS, TYPE_LABEL, onAction, toast, toastError, confirmDialog, alertHtml, browseCard, posterImg, getRegion, setRegion, regionName, REGIONS, safeUrl, addToLibrary, openShowForm } from "../app.js";
 
 if (requireLogin()) {
-  mountShell({ active: "library" });
+  mountShell({ active: new URLSearchParams(location.search).get("entry") ? "library" : "home" });   // opened from My library -> that tab; from Discover or search -> Discover
   const view = $("#view"), q = new URLSearchParams(location.search);
   const S = { media: null, entry: null, warnings: [], stale: false, editing: false, draft: { rating: 0, text: "" }, errors: [], similar: [] };
   const KIND_LABEL = { stream: "Stream", free: "Watch free", rent: "Rent", buy: "Buy", network: "Original network", official: "Official site", link: "Links" };

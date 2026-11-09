@@ -45,9 +45,9 @@ if (requireLogin()) {
   async function loadStats() { try { stats = await api("/api/watchlist/stats"); } catch (e) { stats = null; } }
 
   function renderTabs(r) {
-    const counts = r.facets.statuses, all = STATUS_KEYS.reduce((n, k) => n + counts[k], 0);
+    const counts = r.facets.statuses || {}, all = STATUS_KEYS.reduce((n, k) => n + (counts[k] || 0), 0);   // an empty library has no status counts yet
     const tab = (key, label, n) => `<button class="tab" type="button" role="tab" data-status="${key}" aria-selected="${(state.status || "") === key}">${label}<small>${n}</small></button>`;
-    $("#libTabs").innerHTML = tab("", "All", all) + STATUS_KEYS.map(k => tab(k, STATUS[k].label, counts[k])).join("");
+    $("#libTabs").innerHTML = tab("", "All", all) + STATUS_KEYS.map(k => tab(k, STATUS[k].label, counts[k] || 0)).join("");
   }
 
   function renderGrid(r) {
@@ -63,7 +63,7 @@ if (requireLogin()) {
   $("#libGrid").addEventListener("click", e => { if (e.target.closest("[data-f-clear-all]")) filtersEl.querySelector("[data-f-clear]").click(); });
   $("#libTabs").addEventListener("click", e => { const t = e.target.closest("[data-status]"); if (t) { state.status = t.dataset.status; state.page = 1; load(); } });
   $("#libPager").addEventListener("click", e => { const b = e.target.closest("[data-page]"); if (b && !b.disabled) { state.page = Number(b.dataset.page); load(); window.scrollTo({ top: 0, behavior: "smooth" }); } });
-  $("#libRandom").addEventListener("click", () => openRandomizer({ defaults: { scope: state.status && state.status !== "to_watch" ? "any" : "to_watch", type: state.type, mood: state.mood, genre: state.genre, franchise: state.franchise, tag: state.tag } }));
+  $("#libRandom").addEventListener("click", () => openRandomizer({ defaults: { scope: "any", type: state.type, mood: state.mood, genre: state.genre, franchise: state.franchise, tag: state.tag } }));
 
   async function mutate(promise, okMessage) {
     try { await promise; if (okMessage) toast(okMessage); await loadStats(); await load(); } catch (e) { toastError(e); load(); }

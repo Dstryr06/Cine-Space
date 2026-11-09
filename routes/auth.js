@@ -20,17 +20,29 @@ function matches(password, stored) {
   return a.length === b.length && crypto.timingSafeEqual(a, b);
 }
 
-// brute-force guard: 8 wrong passwords for one account + address, then a 10 minute pause
+// brute-force guard (per account + address):
+//   5 wrong passwords       -> locked for 1 minute
+//   every further 3 wrong   -> the lock grows by 5 minutes (1, 6, 11, 16 ... minutes)
+// A correct password clears the count; the count is also forgotten after 15 quiet minutes.
 const attempts = new Map();
-const WINDOW_MS = 10 * 60 * 1000, MAX_FAILS = 8;
+const FIRST_LOCK_AT = 5, NEXT_LOCK_EVERY = 3;
+const FIRST_LOCK_MS = 60 * 1000, LOCK_STEP_MS = 5 * 60 * 1000, FORGET_AFTER_MS = 15 * 60 * 1000;
 function guard(req, username) {
   const key = `${req.ip}|${username}`, rec = attempts.get(key);
-  if (rec && rec.until > Date.now() && rec.fails >= MAX_FAILS) {
-    throw httpError(429, `Too many failed attempts. Try again in ${Math.ceil((rec.until - Date.now()) / 60000)} minute(s).`);
+  if (rec && rec.lockedUntil > Date.now()) {
+    throw httpError(429, `Too many failed attempts. Try again in ${Math.ceil((rec.lockedUntil - Date.now()) / 60000)} minute(s).`);
   }
   return key;
 }
-const failed = key => { const r = attempts.get(key); attempts.set(key, { fails: (r && r.until > Date.now() ? r.fails : 0) + 1, until: Date.now() + WINDOW_MS }); };
+function failed(key) {
+  const now = Date.now(), r = attempts.get(key);
+  const fails = (r && r.forgetAt > now ? r.fails : 0) + 1;
+  let lockedUntil = 0;
+  if (fails >= FIRST_LOCK_AT && (fails - FIRST_LOCK_AT) % NEXT_LOCK_EVERY === 0) {
+    lockedUntil = now + FIRST_LOCK_MS + ((fails - FIRST_LOCK_AT) / NEXT_LOCK_EVERY) * LOCK_STEP_MS;
+  }
+  attempts.set(key, { fails, lockedUntil, forgetAt: Math.max(lockedUntil, now) + FORGET_AFTER_MS });
+}
 
 router.post("/register", (req, res, next) => { try {
   const username = String(req.body?.username ?? "").trim().toLowerCase();
