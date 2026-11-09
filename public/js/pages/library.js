@@ -45,9 +45,9 @@ if (requireLogin()) {
   async function loadStats() { try { stats = await api("/api/watchlist/stats"); } catch (e) { stats = null; } }
 
   function renderTabs(r) {
-    const counts = r.facets.statuses, all = STATUS_KEYS.reduce((n, k) => n + counts[k], 0);
+    const counts = r.facets.statuses || {}, all = STATUS_KEYS.reduce((n, k) => n + (counts[k] || 0), 0);   // an empty library has no status counts yet
     const tab = (key, label, n) => `<button class="tab" type="button" role="tab" data-status="${key}" aria-selected="${(state.status || "") === key}">${label}<small>${n}</small></button>`;
-    $("#libTabs").innerHTML = tab("", "All", all) + STATUS_KEYS.map(k => tab(k, STATUS[k].label, counts[k])).join("");
+    $("#libTabs").innerHTML = tab("", "All", all) + STATUS_KEYS.map(k => tab(k, STATUS[k].label, counts[k] || 0)).join("");
   }
 
   function renderGrid(r) {
